@@ -1,0 +1,316 @@
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+/* --- CSS Variables --- */
+:root {
+    /* Light Mode */
+    --bg-light: #ffffff;
+    --text-light: #212529;
+    --card-bg-light: #f8f9fa;
+    --border-light: #dee2e6;
+    --navbar-bg-light: rgba(255, 255, 255, 0.9);
+    --primary-color-light: #0d6efd;
+    --success-light: #198754;
+    --warning-light: #ffc107;
+    --danger-light: #dc3545;
+    --kpi-glow-light: rgba(0, 0, 0, 0.1);
+    --chart-grid-light: rgba(0, 0, 0, 0.1);
+    --chart-text-light: #666;
+    --table-stripe-light: rgba(0, 0, 0, 0.05);
+
+    /* Dark Mode */
+    --bg-dark: #121212;
+    --text-dark: #e0e0e0;
+    --card-bg-dark: #1e1e1e;
+    --border-dark: #333;
+    --navbar-bg-dark: rgba(30, 30, 30, 0.9);
+    --primary-color-dark: #4dabf7; /* Lighter blue for dark bg */
+    --success-dark: #69db7c; /* Bright green */
+    --warning-dark: #ffd43b; /* Bright yellow */
+    --danger-dark: #ff6b6b; /* Bright red */
+    --text-glow-yellow: #ffd43b;
+    --text-glow-white: #ffffff;
+    --kpi-glow-dark: 0 0 15px rgba(255, 212, 59, 0.6); /* Yellow glow */
+    --chart-grid-dark: rgba(255, 255, 255, 0.1);
+    --chart-text-dark: #aaa;
+    --table-stripe-dark: rgba(255, 255, 255, 0.05);
+    --neon-green: #39FF14;
+    --neon-red: #FF3131;
+}
+
+/* --- Base Styles --- */
+body {
+    font-family: 'Poppins', sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    padding-top: 70px; /* Account for fixed navbar */
+}
+
+/* --- Theme Switching --- */
+body[data-bs-theme="light"] {
+    background-color: var(--bg-light);
+    color: var(--text-light);
+}
+
+body[data-bs-theme="dark"] {
+    background-color: var(--bg-dark);
+    color: var(--text-dark);
+}
+
+/* --- Navbar --- */
+.navbar-custom {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: background-color 0.3s ease;
+}
+
+body[data-bs-theme="light"] .navbar-custom {
+    background-color: var(--navbar-bg-light);
+}
+body[data-bs-theme="dark"] .navbar-custom {
+    background-color: var(--navbar-bg-dark);
+    border-bottom: 1px solid var(--border-dark);
+}
+body[data-bs-theme="dark"] .navbar-brand,
+body[data-bs-theme="dark"] .nav-link {
+    color: var(--text-dark) !important;
+}
+body[data-bs-theme="dark"] .navbar-toggler-icon {
+     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28224, 224, 224, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Filter Buttons */
+.btn-period {
+    transition: all 0.3s ease;
+}
+body[data-bs-theme="dark"] .btn-check:checked + .btn-outline-primary {
+    background-color: var(--primary-color-dark);
+    border-color: var(--primary-color-dark);
+    color: var(--bg-dark);
+    box-shadow: 0 0 10px var(--primary-color-dark);
+}
+body[data-bs-theme="dark"] .btn-outline-primary {
+    color: var(--primary-color-dark);
+    border-color: var(--primary-color-dark);
+}
+body[data-bs-theme="dark"] .btn-outline-primary:hover {
+    background-color: rgba(77, 171, 247, 0.1);
+}
+
+
+/* --- Cards --- */
+.card {
+    border-radius: 15px;
+    border: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    overflow: hidden; /* Ensure content respects border-radius */
+}
+body[data-bs-theme="light"] .card {
+    background-color: var(--card-bg-light);
+}
+body[data-bs-theme="dark"] .card {
+    background-color: var(--card-bg-dark);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--border-dark);
+}
+body[data-bs-theme="dark"] .card-title {
+    color: var(--text-glow-white);
+}
+
+/* --- KPI Cards --- */
+.kpi-card {
+    position: relative; /* For badge positioning */
+    transform-style: preserve-3d; /* Enable 3D effect for children */
+    perspective: 1000px; /* Define perspective */
+}
+
+.kpi-value {
+    font-weight: 700;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+    transform: translateZ(20px); /* Initial 3D effect */
+}
+.kpi-card .card-title i {
+     font-size: 1.1em;
+     margin-right: 8px;
+}
+
+body[data-bs-theme="dark"] .kpi-value {
+    text-shadow: var(--kpi-glow-dark); /* Luminescent effect */
+}
+body[data-bs-theme="light"] .kpi-value {
+     text-shadow: 0 2px 4px var(--kpi-glow-light);
+}
+
+.period-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 0.7em;
+    padding: 0.3em 0.6em;
+}
+body[data-bs-theme="dark"] .period-badge {
+    background-color: var(--border-dark) !important;
+    color: var(--text-dark) !important;
+}
+
+/* --- Conditional Formatting (KPIs & Table) --- */
+.kpi-conditional.status-ok, .table-value.status-ok {
+    color: var(--success-light);
+}
+.kpi-conditional.status-warn, .table-value.status-warn {
+    color: var(--warning-light);
+    font-weight: 600; /* Make warning stand out a bit */
+}
+.kpi-conditional.status-risk, .table-value.status-risk {
+    color: var(--danger-light);
+    font-weight: 700; /* Make risk stand out more */
+}
+
+body[data-bs-theme="dark"] .kpi-conditional.status-ok,
+body[data-bs-theme="dark"] .table-value.status-ok {
+    color: var(--neon-green); /* Use Neon for dark mode */
+    text-shadow: 0 0 8px var(--neon-green);
+}
+body[data-bs-theme="dark"] .kpi-conditional.status-warn,
+body[data-bs-theme="dark"] .table-value.status-warn {
+    color: var(--warning-dark);
+    text-shadow: 0 0 8px var(--warning-dark);
+}
+body[data-bs-theme="dark"] .kpi-conditional.status-risk,
+body[data-bs-theme="dark"] .table-value.status-risk {
+    color: var(--neon-red); /* Use Neon for dark mode */
+    text-shadow: 0 0 8px var(--neon-red);
+}
+
+
+/* Highlight animation for updated values */
+.value-update {
+    animation: highlight 1s ease-out;
+}
+
+@keyframes highlight {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.15); opacity: 0.7; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+
+/* --- Chart Cards --- */
+.chart-card {
+     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+}
+body[data-bs-theme="dark"] .chart-card {
+     box-shadow: 0 6px 25px rgba(0, 0, 0, 0.5);
+}
+canvas {
+    max-height: 350px; /* Limit chart height */
+    width: 100% !important; /* Ensure canvas fills container */
+}
+
+
+/* --- Table Styles --- */
+.table-card {
+    animation: fadeIn 0.5s ease-in-out; /* Effect when table data changes */
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.table thead th {
+    font-weight: 600;
+    white-space: nowrap;
+}
+body[data-bs-theme="light"] .table thead {
+    background-color: var(--card-bg-light);
+    color: var(--text-light);
+}
+body[data-bs-theme="dark"] .table {
+    --bs-table-color: var(--text-dark);
+    --bs-table-border-color: var(--border-dark);
+    --bs-table-striped-color: var(--text-dark);
+    --bs-table-striped-bg: var(--table-stripe-dark);
+    --bs-table-hover-color: var(--text-glow-white);
+    --bs-table-hover-bg: rgba(255, 255, 255, 0.075);
+}
+body[data-bs-theme="dark"] .table thead {
+     background-color: #2a2a2a; /* Slightly lighter than card bg */
+     color: var(--text-glow-white);
+}
+
+.table-value {
+    font-weight: 500;
+    text-align: right;
+    white-space: nowrap;
+}
+.table-type-income .table-value { color: var(--success-light); }
+.table-type-expense .table-value { color: var(--danger-light); }
+
+body[data-bs-theme="dark"] .table-type-income .table-value { color: var(--success-dark); }
+body[data-bs-theme="dark"] .table-type-expense .table-value { color: var(--danger-dark); }
+
+
+/* Make table header sticky */
+.table-responsive {
+    max-height: 500px; /* Control table scroll height */
+}
+.table thead {
+    position: sticky;
+    top: 0; /* Stick to the top of the scrollable container */
+    z-index: 1;
+}
+body[data-bs-theme="light"] .table thead {
+    background-color: var(--card-bg-light); /* Ensure background covers scrolled content */
+}
+body[data-bs-theme="dark"] .table thead {
+     background-color: #2a2a2a;
+}
+
+/* --- Footer --- */
+.footer-custom {
+    margin-top: 2rem;
+    padding: 1rem 0;
+    font-size: 0.9em;
+    border-top: 1px solid var(--border-light);
+}
+body[data-bs-theme="dark"] .footer-custom {
+    border-top: 1px solid var(--border-dark);
+    color: var(--chart-text-dark); /* Dimmer text */
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 767.98px) {
+    .kpi-value {
+        font-size: 2.5rem; /* Slightly smaller on mobile */
+    }
+    .navbar-nav .btn-group {
+        margin-top: 10px;
+        width: 100%;
+        display: flex;
+    }
+    .navbar-nav .btn-group > label {
+        flex-grow: 1;
+    }
+    .navbar-nav .btn-outline-secondary {
+        margin-top: 10px;
+        width: 100%;
+    }
+     .table-responsive {
+        max-height: 400px; /* Adjust for smaller screens */
+    }
+}
+
+/* --- Transitions --- */
+#kpi-section .card, #charts-section .card, #table-section .card {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+#kpi-section .card:hover, #charts-section .card:hover, #table-section .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+body[data-bs-theme="dark"] #kpi-section .card:hover,
+body[data-bs-theme="dark"] #charts-section .card:hover,
+body[data-bs-theme="dark"] #table-section .card:hover {
+     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Flujo de Caja 📊</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+            padding-top: 70px; /* Adjust based on navbar height */
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .navbar-custom {
+            background-color: var(--bs-body-bg); /* Use Bootstrap variable for theme compatibility */
+            box-shadow: 0 2px 4px rgba(0,0,0,.1);
+        }
+
+        .kpi-card, .chart-card, .table-card {
+            border: none;
+            border-radius: 0.5rem;
+            box-shadow: 0 0 15px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease-in-out;
+            background-color: var(--bs-card-bg, white); /* Theme compatible background */
+            margin-bottom: 1.5rem; /* Add some space below cards */
+        }
+        .kpi-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .kpi-value {
+            font-weight: bold;
+            transition: color 0.4s ease; /* Smooth color transition for conditional formatting */
+        }
+        .kpi-conditional.status-ok { color: var(--bs-success); }
+        .kpi-conditional.status-warn { color: var(--bs-warning); }
+        .kpi-conditional.status-risk { color: var(--bs-danger); }
+
+        /* Simple value update animation */
+        .value-update {
+            animation: pulse 0.5s ease-out;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .period-badge {
+            font-size: 0.75em;
+            margin-top: 5px;
+            display: inline-block;
+            padding: 0.3em 0.6em;
+            border-radius: 0.25rem;
+            background-color: var(--bs-secondary-bg); /* Default background */
+            color: var(--bs-secondary-color-rgb); /* Default text color */
+        }
+        /* Ensure badge text is visible in dark mode */
+        [data-bs-theme="dark"] .period-badge {
+             background-color: var(--bs-secondary);
+             color: var(--bs-light); /* Use light text on dark badges */
+        }
+
+
+        .chart-card canvas {
+            max-height: 350px; /* Limit chart height */
+            width: 100% !important; /* Ensure canvas fills container */
+        }
+
+        .table-responsive {
+            max-height: 500px; /* Limit table height and enable scroll */
+            overflow-y: auto;
+        }
+        .table thead.sticky-top {
+             position: sticky; /* Make header sticky */
+             top: 0; /* Stick to the top of the scrollable container */
+             background-color: var(--bs-table-bg, white); /* Ensure header background matches theme */
+             z-index: 10; /* Keep header above table content */
+             box-shadow: inset 0 -2px 0 var(--bs-border-color); /* Add a bottom border */
+        }
+
+        /* Ensure table cells don't wrap unnecessarily */
+        .table td, .table th {
+            white-space: nowrap;
+        }
+        /* Allow description to wrap if needed */
+        .table td:nth-child(4), .table th:nth-child(4) {
+            white-space: normal;
+        }
+
+
+        .footer-custom {
+            background-color: var(--bs-tertiary-bg); /* Theme compatible footer */
+            padding: 1rem 0;
+            font-size: 0.9em;
+            margin-top: 2rem;
+            border-top: 1px solid var(--bs-border-color);
+        }
+
+        /* Dark theme specific adjustments */
+        [data-bs-theme="dark"] body {
+             background-color: #121212; /* Dark background */
+        }
+         [data-bs-theme="dark"] .navbar-custom {
+             background-color: #1e1e1e;
+             box-shadow: 0 2px 4px rgba(255,255,255,.05);
+        }
+         [data-bs-theme="dark"] .kpi-card,
+         [data-bs-theme="dark"] .chart-card,
+         [data-bs-theme="dark"] .table-card {
+            background-color: #2b3035; /* Darker card background */
+            box-shadow: 0 0 15px rgba(255,255,255,0.03);
+         }
+          [data-bs-theme="dark"] .table thead.sticky-top {
+             background-color: #2b3035; /* Dark header background */
+             box-shadow: inset 0 -2px 0 var(--bs-border-color);
+          }
+         [data-bs-theme="dark"] .footer-custom {
+             background-color: #1e1e1e;
+         }
+         /* Adjust conditional colors for better contrast in dark mode if needed */
+         [data-bs-theme="dark"] .kpi-conditional.status-ok { color: #28a745; }
+         [data-bs-theme="dark"] .kpi-conditional.status-warn { color: #ffc107; }
+         [data-bs-theme="dark"] .kpi-conditional.status-risk { color: #dc3545; }
+
+         /* Style for the period filter buttons */
+        .btn-period {
+            font-size: 0.85rem; /* Slightly smaller font */
+            padding: 0.3rem 0.6rem; /* Adjust padding */
+        }
+    </style>
+</head>
+<body data-bs-theme="light"> <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-chart-line me-2"></i>Flujo de Caja Dinámico 🔥
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item dropdown me-lg-3 mb-2 mb-lg-0">
+                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownFilters" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                             <i class="fas fa-filter me-1"></i> Filtros Avanzados
+                         </a>
+                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownFilters">
+                             <li><div class="px-3 py-2"><label for="filter-year" class="form-label form-label-sm">Año:</label><select id="filter-year" class="form-select form-select-sm mb-2"><option value="all" selected>Todos los Años</option></select></div></li>
+                             <li><div class="px-3 py-2"><label for="filter-category" class="form-label form-label-sm">Categoría:</label><select id="filter-category" class="form-select form-select-sm mb-2"><option value="all" selected>Todas las Categorías</option></select></div></li>
+                             <li><div class="px-3 py-2"><label for="filter-description" class="form-label form-label-sm">Buscar Descripción:</label><input type="search" id="filter-description" class="form-control form-control-sm" placeholder="Ej: Venta, Alquiler..."></div></li>
+                         </ul>
+                    </li>
+                    <li class="nav-item me-lg-3 mb-2 mb-lg-0">
+                        <div class="btn-group" role="group" aria-label="Filtro de Período">
+                            <input type="radio" class="btn-check" name="period-filter" id="filter-all-periods" autocomplete="off" value="all_periods" checked> <label class="btn btn-outline-primary btn-period" for="filter-all-periods"><i class="fas fa-globe me-1"></i>Todo</label>
+
+                            <input type="radio" class="btn-check" name="period-filter" id="filter-monthly" autocomplete="off" value="monthly">
+                            <label class="btn btn-outline-primary btn-period" for="filter-monthly"><i class="far fa-calendar-alt me-1"></i>Mensual</label>
+
+                            <input type="radio" class="btn-check" name="period-filter" id="filter-quarterly" autocomplete="off" value="quarterly">
+                            <label class="btn btn-outline-primary btn-period" for="filter-quarterly"><i class="far fa-calendar-check me-1"></i>Trimestral</label>
+
+                            <input type="radio" class="btn-check" name="period-filter" id="filter-annual" autocomplete="off" value="annual">
+                            <label class="btn btn-outline-primary btn-period" for="filter-annual"><i class="far fa-calendar-days me-1"></i>Anual</label>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <button id="theme-toggle" class="btn btn-outline-secondary">
+                            <i class="fas fa-moon"></i> <span class="d-none d-lg-inline">Modo Oscuro</span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container-fluid mt-4"> <section id="kpi-section" class="row mb-4 gy-4">
+            <div class="col-lg-3 col-md-6">
+                <div class="card kpi-card text-center h-100">
+                    <div class="card-body d-flex flex-column"> <h5 class="card-title"><i class="fas fa-coins me-2 text-success"></i>Ingresos Totales 💰</h5>
+                        <p id="total-income" class="card-text display-5 kpi-value mt-auto">€0,00</p> <span class="badge period-badge align-self-center">Total General</span> </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card kpi-card text-center h-100">
+                     <div class="card-body d-flex flex-column">
+                        <h5 class="card-title"><i class="fas fa-receipt me-2 text-danger"></i>Gastos Totales 💸</h5>
+                        <p id="total-expense" class="card-text display-5 kpi-value mt-auto">€0,00</p>
+                        <span class="badge period-badge align-self-center">Total General</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card kpi-card text-center h-100">
+                     <div class="card-body d-flex flex-column">
+                        <h5 class="card-title"><i class="fas fa-balance-scale me-2"></i>Flujo Neto ⚖️</h5>
+                        <p id="net-cashflow" class="card-text display-5 kpi-value kpi-conditional mt-auto">€0,00</p>
+                        <span class="badge period-badge align-self-center">Total General</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card kpi-card text-center h-100">
+                     <div class="card-body d-flex flex-column">
+                        <h5 class="card-title"><i class="fas fa-percentage me-2"></i>Margen Neto (%) 📈</h5>
+                        <p id="net-margin" class="card-text display-5 kpi-value kpi-conditional mt-auto">0.0%</p>
+                        <span class="badge period-badge align-self-center">Total General</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="extra-kpi-section" class="row mb-4 gy-4">
+             <div class="col-lg-4 col-md-6">
+                 <div class="card kpi-card text-center h-100">
+                     <div class="card-body">
+                         <h5 class="card-title"><i class="fas fa-sort-amount-down me-2 text-danger"></i>Top Categoría Gasto 📉</h5>
+                         <p id="top-expense-category" class="card-text h4 kpi-value">-</p>
+                         <span id="top-expense-amount" class="text-muted small">€0,00</span>
+                     </div>
+                 </div>
+             </div>
+             <div class="col-lg-4 col-md-6">
+                 <div class="card kpi-card text-center h-100">
+                     <div class="card-body">
+                         <h5 class="card-title"><i class="fas fa-sort-amount-up me-2 text-success"></i>Top Categoría Ingreso 📈</h5>
+                         <p id="top-income-category" class="card-text h4 kpi-value">-</p>
+                          <span id="top-income-amount" class="text-muted small">€0,00</span>
+                     </div>
+                 </div>
+             </div>
+            <div class="col-lg-4 col-md-12"> <div class="card kpi-card text-center h-100">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title"><i class="fas fa-university me-2"></i>Saldo Final Acumulado 🏦</h5>
+                        <p id="ending-balance" class="card-text display-6 kpi-value kpi-conditional mt-auto">€0,00</p>
+                         <span class="badge period-badge align-self-center">Acumulado</span> </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="charts-section" class="row mb-4 gy-4">
+             <div class="col-lg-8">
+                 <div class="card chart-card h-100">
+                     <div class="card-body">
+                         <h5 class="card-title"><i class="fas fa-chart-bar me-2"></i>Ingresos vs Gastos por Período</h5>
+                         <canvas id="incomeExpenseChart"></canvas>
+                     </div>
+                 </div>
+             </div>
+             <div class="col-lg-4">
+                 <div class="card chart-card h-100">
+                     <div class="card-body">
+                         <h5 class="card-title"><i class="fas fa-chart-pie me-2"></i>Proporción I/G (Total)</h5>
+                         <canvas id="incomeExpensePieChart"></canvas>
+                     </div>
+                 </div>
+             </div>
+             <div class="col-12">
+                 <div class="card chart-card h-100">
+                     <div class="card-body">
+                         <h5 class="card-title"><i class="fas fa-chart-line me-2"></i>Tendencia Flujo Neto (Periódico)</h5>
+                         <canvas id="netCashflowTrendChart"></canvas>
+                     </div>
+                 </div>
+             </div>
+        </section>
+
+         <section id="category-charts-section" class="row mb-4 gy-4">
+            <div class="col-lg-6">
+                <div class="card chart-card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fas fa-search-dollar me-2 text-danger"></i>Distribución de Gastos por Categoría 💸</h5>
+                        <canvas id="expenseCategoryChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                 <div class="card chart-card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fas fa-hand-holding-usd me-2 text-success"></i>Distribución de Ingresos por Categoría 💰</h5>
+                        <canvas id="incomeCategoryChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="cumulative-chart-section" class="row mb-4 gy-4">
+            <div class="col-12">
+                <div class="card chart-card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fas fa-chart-area me-2"></i>Tendencia Saldo Acumulado 🏦</h5>
+                        <canvas id="cumulativeBalanceChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="table-section" class="row mb-4">
+            <div class="col-12">
+                <div class="card table-card">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fas fa-list-ul me-2"></i>Detalle de Transacciones <span id="table-period-label">(General)</span></h5>
+                        <div class="table-responsive">
+                            <table class="table table-hover table-striped align-middle">
+                                <thead class="sticky-top">
+                                    <tr>
+                                        <th>Fecha</th>
+                                        <th>Tipo</th> <th>Categoría</th>
+                                        <th>Descripción</th>
+                                        <th class="text-end">Monto</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="transaction-table-body">
+                                     <tr><td colspan="5" class="text-center p-5"><i class="fas fa-spinner fa-spin me-2"></i>Cargando datos...</td></tr> </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="text-center py-3 footer-custom">
+        <p class="mb-0">© 2024 Dashboard Flujo de Caja. Diseñado con ❤️ y ☕.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/locale/es.min.js"></script> <script src="script.js"></script>
+
+</body>
+</html>
