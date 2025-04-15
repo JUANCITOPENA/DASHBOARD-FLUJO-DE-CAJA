@@ -1,209 +1,178 @@
 /* Import Google Font */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap'); /* Added 500 weight */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 /* --- CSS Variables --- */
 :root {
     /* Common */
     --base-font-size: 16px; /* Base for rem calculations */
+    --card-border-radius: 12px;
+    --default-card-padding: 1.25rem;
+    --default-card-margin-bottom: 1.5rem;
 
     /* Light Mode */
-    --bg-light: #f1f3f5; /* Slightly off-white */
+    --bg-light: #f1f3f5;
     --text-light: #212529;
-    --card-bg-light: #ffffff; /* Pure white cards */
+    --card-bg-light: #ffffff;
     --border-light: #dee2e6;
-    --navbar-bg-light: rgba(255, 255, 255, 0.85); /* Slightly less transparent */
+    --navbar-bg-light: rgba(255, 255, 255, 0.88); /* Adjusted transparency */
     --primary-color-light: #0d6efd;
     --success-light: #198754;
     --warning-light: #ffc107;
     --danger-light: #dc3545;
-    --kpi-glow-light: rgba(0, 0, 0, 0.1);
+    --kpi-glow-light: rgba(0, 0, 0, 0.08);
     --chart-grid-light: rgba(0, 0, 0, 0.08);
     --chart-text-light: #555;
-    --table-stripe-light: #f8f9fa; /* Explicit stripe color */
+    --table-stripe-light: #f8f9fa;
     --table-header-bg-light: #e9ecef;
 
     /* Dark Mode */
-    --bg-dark: #0c0c0c; /* Darker background */
-    --text-dark: #e8e8e8; /* Slightly brighter text */
-    --card-bg-dark: #1a1a1a; /* Slightly adjusted card */
-    --border-dark: #383838; /* Slightly lighter border */
-    --navbar-bg-dark: rgba(26, 26, 26, 0.85); /* Slightly less transparent */
-    --primary-color-dark: #4dabf7;
-    --success-dark: #69db7c;
-    --warning-dark: #ffd43b;
-    --danger-dark: #ff6b6b;
-    --text-glow-yellow: #ffd43b;
+    --bg-dark: #0e0e10; /* Slightly different dark */
+    --text-dark: #e8e8e8;
+    --card-bg-dark: #1c1c1f; /* Adjusted card dark */
+    --border-dark: #3a3a40; /* Adjusted border dark */
+    --navbar-bg-dark: rgba(28, 28, 31, 0.88); /* Adjusted transparency */
+    --primary-color-dark: #50aeff; /* Slightly adjusted blue */
+    --success-dark: #60d080; /* Slightly adjusted green */
+    --warning-dark: #facc15; /* Adjusted yellow */
+    --danger-dark: #ff5f5f; /* Adjusted red */
+    --text-glow-yellow: var(--warning-dark);
     --text-glow-white: #ffffff;
-    --kpi-glow-dark: 0 0 15px rgba(77, 171, 247, 0.5); /* Blue primary glow */
-    --chart-grid-dark: rgba(255, 255, 255, 0.1);
-    --chart-text-dark: #bbb;
-    --table-stripe-dark: rgba(255, 255, 255, 0.04); /* More subtle stripe */
-    --table-header-bg-dark: #2c2c2c;
-    --neon-green: #39FF14;
-    --neon-red: #FF3131;
-    --neon-yellow: #f1fa8c; /* For Warning */
+    --kpi-glow-dark: 0 0 12px rgba(80, 174, 255, 0.5); /* Primary blue glow */
+    --chart-grid-dark: rgba(255, 255, 255, 0.09);
+    --chart-text-dark: #b0b0b0;
+    --table-stripe-dark: rgba(255, 255, 255, 0.04);
+    --table-header-bg-dark: #2a2a2e; /* Adjusted header dark */
+    --neon-green: var(--success-dark); /* Use theme color directly */
+    --neon-red: var(--danger-dark);
+    --neon-yellow: var(--warning-dark);
 }
 
 /* --- Base Styles & Font Scaling Foundation --- */
 html {
-    font-size: var(--base-font-size); /* Set base for rem units */
+    font-size: var(--base-font-size);
+    scroll-behavior: smooth;
 }
 
 body {
     font-family: 'Poppins', sans-serif;
-    transition: background-color 0.4s ease, color 0.4s ease;
-    padding-top: 75px; /* Adjust if navbar height changes */
-    font-size: 1rem; /* Default body font size */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    padding-top: 70px; /* Default, adjust in media queries if needed */
+    font-size: 0.95rem; /* Slightly smaller base body text */
     line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 /* --- Theme Switching --- */
-body[data-bs-theme="light"] {
-    background-color: var(--bg-light);
-    color: var(--text-light);
-}
-
-body[data-bs-theme="dark"] {
-    background-color: var(--bg-dark);
-    color: var(--text-dark);
-}
+body[data-bs-theme="light"] { background-color: var(--bg-light); color: var(--text-light); }
+body[data-bs-theme="dark"] { background-color: var(--bg-dark); color: var(--text-dark); }
 
 /* --- Navbar --- */
 .navbar-custom {
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     transition: background-color 0.3s ease, border-color 0.3s ease;
-    border-bottom: 1px solid transparent; /* Start transparent */
-    min-height: 70px; /* Ensure minimum height */
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
+    border-bottom: 1px solid; /* Set in themes */
+    min-height: 65px; /* Base height */
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
 }
-
-body[data-bs-theme="light"] .navbar-custom {
-    background-color: var(--navbar-bg-light);
-    border-color: var(--border-light);
-}
-body[data-bs-theme="dark"] .navbar-custom {
-    background-color: var(--navbar-bg-dark);
-    border-color: var(--border-dark);
-}
-body[data-bs-theme="dark"] .navbar-brand,
-body[data-bs-theme="dark"] .nav-link {
-    color: var(--text-dark) !important;
-}
-body[data-bs-theme="dark"] .navbar-brand:hover,
-body[data-bs-theme="dark"] .nav-link:hover {
-    color: var(--text-glow-white) !important;
-}
-body[data-bs-theme="dark"] .navbar-toggler-icon {
-     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28232, 232, 232, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-}
+body[data-bs-theme="light"] .navbar-custom { background-color: var(--navbar-bg-light); border-color: var(--border-light); }
+body[data-bs-theme="dark"] .navbar-custom { background-color: var(--navbar-bg-dark); border-color: var(--border-dark); }
+body[data-bs-theme="dark"] .navbar-brand, body[data-bs-theme="dark"] .nav-link { color: var(--text-dark) !important; }
+body[data-bs-theme="dark"] .navbar-brand:hover, body[data-bs-theme="dark"] .nav-link:hover { color: var(--text-glow-white) !important; }
+body[data-bs-theme="dark"] .navbar-toggler-icon { background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28232, 232, 232, 0.85%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); }
 
 /* Filter Buttons */
 .btn-period {
     transition: all 0.3s ease;
-    font-size: 0.9rem; /* Slightly smaller buttons */
-    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem; /* Smaller base size */
+    padding: 0.35rem 0.7rem;
 }
-body[data-bs-theme="dark"] .btn-check:checked + .btn-outline-primary {
-    background-color: var(--primary-color-dark);
-    border-color: var(--primary-color-dark);
-    color: var(--bg-dark);
-    box-shadow: 0 0 12px rgba(77, 171, 247, 0.7);
-}
-body[data-bs-theme="dark"] .btn-outline-primary {
-    color: var(--primary-color-dark);
-    border-color: var(--primary-color-dark);
-}
-body[data-bs-theme="dark"] .btn-outline-primary:hover {
-    background-color: rgba(77, 171, 247, 0.15);
-    color: var(--text-glow-white);
-}
+body[data-bs-theme="dark"] .btn-check:checked + .btn-outline-primary { background-color: var(--primary-color-dark); border-color: var(--primary-color-dark); color: var(--bg-dark); box-shadow: 0 0 10px rgba(80, 174, 255, 0.6); }
+body[data-bs-theme="dark"] .btn-outline-primary { color: var(--primary-color-dark); border-color: var(--primary-color-dark); }
+body[data-bs-theme="dark"] .btn-outline-primary:hover { background-color: rgba(80, 174, 255, 0.1); color: var(--text-glow-white); }
 
 
 /* --- Cards --- */
 .card {
-    border-radius: 12px; /* Slightly less rounded */
+    border-radius: var(--card-border-radius);
     border: none;
-    transition: all 0.35s ease;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     overflow: hidden;
-    margin-bottom: 1.5rem; /* Default spacing */
+    margin-bottom: var(--default-card-margin-bottom);
 }
 .card-body {
-    padding: 1.25rem; /* Default padding */
+    padding: var(--default-card-padding);
 }
 .card-title {
     font-weight: 600;
-    margin-bottom: 0.75rem;
-    font-size: 1.1rem; /* Base title size */
-    display: flex; /* Align icon and text */
+    margin-bottom: 0.6rem; /* Base title margin */
+    font-size: 1.05rem; /* Base title size */
+    display: flex;
     align-items: center;
+    line-height: 1.4;
 }
 .card-title i {
-     font-size: 1.2em; /* Make icons slightly larger relative to title */
-     margin-right: 0.6rem;
-     line-height: 1; /* Prevent icon affecting line height */
+    font-size: 1.1em; /* Icon relative to title */
+    margin-right: 0.5rem;
+    line-height: 1;
+    color: var(--primary-color-light); /* Icon color */
+    min-width: 1.2em; /* Ensure consistent spacing */
+    text-align: center;
+}
+body[data-bs-theme="dark"] .card-title i {
+    color: var(--primary-color-dark);
 }
 
-body[data-bs-theme="light"] .card {
-    background-color: var(--card-bg-light);
-}
-body[data-bs-theme="dark"] .card {
-    background-color: var(--card-bg-dark);
-    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.5);
-    border: 1px solid var(--border-dark);
-}
-body[data-bs-theme="dark"] .card-title {
-    color: var(--text-glow-white);
-}
+/* Theme card styles */
+body[data-bs-theme="light"] .card { background-color: var(--card-bg-light); }
+body[data-bs-theme="dark"] .card { background-color: var(--card-bg-dark); box-shadow: 0 5px 20px rgba(0, 0, 0, 0.45); border: 1px solid var(--border-dark); }
+body[data-bs-theme="dark"] .card-title { color: var(--text-glow-white); }
 
 /* --- KPI Cards --- */
-.kpi-card {
-    position: relative;
-    text-align: center; /* Center align KPI content */
+.kpi-card .card-body {
+    text-align: center;
 }
 
 .kpi-value {
     font-weight: 700;
     transition: color 0.3s ease, text-shadow 0.3s ease, font-size 0.3s ease;
-    display: block; /* Ensure it takes full width for centering */
-    margin-top: 0.5rem;
-    margin-bottom: 0.25rem;
-    line-height: 1.2;
-    font-size: 2.5rem; /* Base KPI size */
+    display: block;
+    margin-top: 0.3rem;
+    margin-bottom: 0.1rem;
+    line-height: 1.1;
+    font-size: 2.2rem; /* Base KPI size */
 }
 
 .kpi-label {
-    font-size: 0.9rem;
-    color: var(--chart-text-light); /* Use chart text color for secondary labels */
+    font-size: 0.8rem; /* Base label size */
+    color: var(--chart-text-light);
     margin-bottom: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 500;
 }
+body[data-bs-theme="dark"] .kpi-label { color: var(--chart-text-dark); }
 
-body[data-bs-theme="dark"] .kpi-label {
-    color: var(--chart-text-dark);
-}
-
-body[data-bs-theme="dark"] .kpi-value {
-    text-shadow: var(--kpi-glow-dark);
-}
-body[data-bs-theme="light"] .kpi-value {
-     text-shadow: 0 2px 5px var(--kpi-glow-light);
-}
+/* KPI Glow effects */
+body[data-bs-theme="dark"] .kpi-value { text-shadow: var(--kpi-glow-dark); }
+body[data-bs-theme="light"] .kpi-value { text-shadow: 0 1px 3px var(--kpi-glow-light); }
 
 .period-badge {
     position: absolute;
-    top: 12px;
-    right: 12px;
-    font-size: 0.65em;
-    font-weight: 500;
-    padding: 0.35em 0.7em;
+    top: 10px;
+    right: 10px;
+    font-size: 0.6em; /* Smaller badge */
+    font-weight: 600;
+    padding: 0.3em 0.6em;
+    border-radius: 4px;
+    letter-spacing: 0.3px;
 }
-body[data-bs-theme="dark"] .period-badge {
-    background-color: rgba(255, 255, 255, 0.1) !important;
-    color: var(--chart-text-dark) !important;
-}
+body[data-bs-theme="dark"] .period-badge { background-color: rgba(255, 255, 255, 0.1) !important; color: var(--chart-text-dark) !important; }
+body[data-bs-theme="light"] .period-badge { background-color: rgba(0, 0, 0, 0.05) !important; color: var(--text-light) !important; }
 
 /* --- Conditional Formatting (KPIs & Table) --- */
 .kpi-conditional.status-ok, .table-value.status-ok { color: var(--success-light); }
@@ -213,237 +182,200 @@ body[data-bs-theme="dark"] .period-badge {
 body[data-bs-theme="dark"] .kpi-conditional.status-ok,
 body[data-bs-theme="dark"] .table-value.status-ok {
     color: var(--neon-green);
-    text-shadow: 0 0 6px rgba(57, 255, 20, 0.7); /* Subtle glow */
+    text-shadow: 0 0 5px rgba(96, 208, 128, 0.6); /* Adjusted glow */
 }
 body[data-bs-theme="dark"] .kpi-conditional.status-warn,
 body[data-bs-theme="dark"] .table-value.status-warn {
     color: var(--neon-yellow);
-    text-shadow: 0 0 6px rgba(241, 250, 140, 0.7);
+    text-shadow: 0 0 5px rgba(250, 204, 21, 0.6);
 }
 body[data-bs-theme="dark"] .kpi-conditional.status-risk,
 body[data-bs-theme="dark"] .table-value.status-risk {
     color: var(--neon-red);
-    text-shadow: 0 0 6px rgba(255, 49, 49, 0.7);
+    text-shadow: 0 0 5px rgba(255, 95, 95, 0.6);
 }
 
 /* Highlight animation */
-.value-update { animation: highlight 1.2s ease-out; }
+.value-update { animation: highlight 1s ease-out; }
 @keyframes highlight {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.08); opacity: 0.8; } /* More subtle scale */
 }
 
 /* --- Chart Cards --- */
 .chart-card {
-     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-     padding-bottom: 1rem; /* Add space below chart */
+     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+     padding-bottom: 0.5rem;
 }
 body[data-bs-theme="dark"] .chart-card {
-     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.55);
+     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.5);
 }
 canvas {
-    max-height: 300px; /* Default max height */
+    max-height: 280px; /* Default max height */
     width: 100% !important;
 }
 
 /* --- Table Styles --- */
-.table-card {
-    animation: fadeIn 0.6s ease-in-out;
-}
+.table-card { animation: fadeIn 0.5s ease-out; }
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(15px); }
+    from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
 .table-responsive {
-    max-height: 450px; /* Default scroll height */
+    max-height: 400px; /* Default scroll height */
     overflow-y: auto;
-    border-radius: 0 0 12px 12px; /* Match card bottom radius */
+    border: 1px solid var(--border-light); /* Add border to scroll area */
+    border-top: none; /* Remove top border, handled by header */
+    border-radius: 0 0 var(--card-border-radius) var(--card-border-radius);
+}
+body[data-bs-theme="dark"] .table-responsive {
+    border-color: var(--border-dark);
 }
 
 .table {
-    margin-bottom: 0; /* Remove default margin inside responsive container */
-    font-size: 0.9rem; /* Base table font size */
+    margin-bottom: 0;
+    font-size: 0.85rem; /* Base table font size */
 }
 
 .table thead th {
     font-weight: 600;
     white-space: nowrap;
-    font-size: 0.85rem; /* Slightly smaller header */
+    font-size: 0.75rem; /* Smaller header */
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-    padding: 0.8rem 1rem;
+    letter-spacing: 0.6px;
+    padding: 0.7rem 0.9rem; /* Adjusted padding */
     position: sticky;
     top: 0;
     z-index: 10;
+    border-bottom-width: 2px; /* Thicker bottom border */
 }
 .table tbody td {
-    padding: 0.7rem 1rem;
+    padding: 0.6rem 0.9rem; /* Adjusted padding */
     vertical-align: middle;
 }
 
 /* Theme-specific table styles */
-body[data-bs-theme="light"] .table thead th {
-    background-color: var(--table-header-bg-light);
-    color: var(--text-light);
-    border-bottom: 2px solid var(--border-light);
-}
-body[data-bs-theme="light"] .table-striped > tbody > tr:nth-of-type(odd) > * {
-    background-color: var(--table-stripe-light);
-}
+body[data-bs-theme="light"] .table thead th { background-color: var(--table-header-bg-light); color: var(--text-light); border-color: var(--border-light); }
+body[data-bs-theme="light"] .table-striped > tbody > tr:nth-of-type(odd) > * { background-color: var(--table-stripe-light); }
 
-body[data-bs-theme="dark"] .table {
-    --bs-table-color: var(--text-dark);
-    --bs-table-border-color: var(--border-dark);
-    --bs-table-striped-color: var(--text-dark);
-    --bs-table-striped-bg: var(--table-stripe-dark);
-    --bs-table-hover-color: var(--text-glow-white);
-    --bs-table-hover-bg: rgba(255, 255, 255, 0.07);
-}
-body[data-bs-theme="dark"] .table thead th {
-     background-color: var(--table-header-bg-dark);
-     color: var(--text-glow-white);
-     border-bottom: 2px solid var(--border-dark);
-}
+body[data-bs-theme="dark"] .table { --bs-table-color: var(--text-dark); --bs-table-border-color: var(--border-dark); --bs-table-striped-color: var(--text-dark); --bs-table-striped-bg: var(--table-stripe-dark); --bs-table-hover-color: var(--text-glow-white); --bs-table-hover-bg: rgba(255, 255, 255, 0.06); }
+body[data-bs-theme="dark"] .table thead th { background-color: var(--table-header-bg-dark); color: var(--text-glow-white); border-color: var(--border-dark); }
 
-.table-value {
-    font-weight: 500;
-    text-align: right;
-    white-space: nowrap;
-}
+.table-value { font-weight: 500; text-align: right; white-space: nowrap; }
 .table-type-income .table-value { color: var(--success-light); }
 .table-type-expense .table-value { color: var(--danger-light); }
-
 body[data-bs-theme="dark"] .table-type-income .table-value { color: var(--success-dark); }
 body[data-bs-theme="dark"] .table-type-expense .table-value { color: var(--danger-dark); }
 
+
 /* --- Footer --- */
-.footer-custom {
-    margin-top: 3rem;
-    padding: 1.5rem 0;
-    font-size: 0.85em;
-    border-top: 1px solid var(--border-light);
-    text-align: center;
-}
-body[data-bs-theme="dark"] .footer-custom {
-    border-top: 1px solid var(--border-dark);
-    color: var(--chart-text-dark);
-}
+.footer-custom { margin-top: 2.5rem; padding: 1.2rem 0; font-size: 0.8em; border-top: 1px solid var(--border-light); text-align: center; }
+body[data-bs-theme="dark"] .footer-custom { border-top-color: var(--border-dark); color: var(--chart-text-dark); }
 
 /* --- Responsive Adjustments --- */
 
 /* Mobile (XS - <576px) */
 @media (max-width: 575.98px) {
-    body { padding-top: 65px; } /* Adjust for potentially smaller navbar */
-    .navbar-custom { min-height: 60px; }
-    .card-body { padding: 1rem; }
-    .card-title { font-size: 1rem; }
-    .kpi-value { font-size: 2rem; } /* Smaller KPI */
-    .kpi-label { font-size: 0.8rem; }
-    .table { font-size: 0.75rem; } /* Smaller table text */
-    .table thead th, .table tbody td { padding: 0.6rem 0.75rem; }
-    .table-responsive { max-height: 350px; }
-    canvas { max-height: 250px; }
+    body { padding-top: 60px; font-size: 0.9rem; }
+    .navbar-custom { min-height: 55px; }
+    .container, .container-fluid { padding-left: 10px; padding-right: 10px; } /* Reduce container padding */
+    .card { margin-bottom: 1rem; }
+    .card-body { padding: 0.9rem; }
+    .card-title { font-size: 0.95rem; margin-bottom: 0.5rem; }
+    .card-title i { font-size: 1em; margin-right: 0.4rem; }
+    .kpi-value { font-size: 1.8rem; }
+    .kpi-label { font-size: 0.7rem; }
+    .table { font-size: 0.7rem; } /* Even smaller table text */
+    .table thead th, .table tbody td { padding: 0.5rem 0.6rem; }
+    .table-responsive { max-height: 300px; }
+    canvas { max-height: 200px; }
 
-    .navbar-nav .btn-group { /* Stack buttons vertically */
-        margin-top: 10px;
-        width: 100%;
-        flex-direction: column;
-    }
-     .navbar-nav .btn-group > .btn {
-        width: 100%;
-        margin-bottom: 5px; /* Space between stacked buttons */
-        border-radius: 0.3rem !important; /* Consistent radius when stacked */
-     }
-     .navbar-nav .btn-group > label { /* Ensure label works with stacked button */
-         width: 100%;
-         margin-bottom: 5px;
-     }
-     .navbar-nav .btn-outline-secondary { /* Theme toggle button full width */
-        margin-top: 10px;
-        width: 100%;
-    }
+    .navbar-nav .btn-group { margin-top: 8px; width: 100%; flex-direction: column; }
+    .navbar-nav .btn-group > .btn, .navbar-nav .btn-group > label { width: 100%; margin-bottom: 6px; }
+    .navbar-nav .btn-outline-secondary { margin-top: 8px; width: 100%; }
+    .btn-period { font-size: 0.75rem; }
 }
 
 /* Small Devices (SM - >=576px) */
 @media (min-width: 576px) {
-    .kpi-value { font-size: 2.25rem; }
+    body { font-size: 0.92rem; }
+    .card-title { font-size: 1rem; }
+    .kpi-value { font-size: 2rem; }
+    .kpi-label { font-size: 0.75rem; }
     .table { font-size: 0.8rem; }
-    canvas { max-height: 280px; }
+    canvas { max-height: 240px; }
 }
 
 /* Medium Devices (MD - Tablets >=768px) */
 @media (min-width: 768px) {
-    body { padding-top: 70px; } /* Restore default padding */
-    .navbar-custom { min-height: 70px; }
-    .card-body { padding: 1.25rem; } /* Restore default padding */
-    .card-title { font-size: 1.1rem; } /* Restore default title */
-    .kpi-value { font-size: 2.75rem; } /* Larger KPI */
-    .kpi-label { font-size: 0.9rem; }
+    body { padding-top: 65px; font-size: 0.95rem; } /* Restore base size */
+    .navbar-custom { min-height: 65px; }
+    .card { margin-bottom: var(--default-card-margin-bottom); }
+    .card-body { padding: var(--default-card-padding); }
+    .card-title { font-size: 1.05rem; }
+    .card-title i { font-size: 1.1em; }
+    .kpi-value { font-size: 2.5rem; } /* Increase KPI size */
+    .kpi-label { font-size: 0.8rem; }
     .table { font-size: 0.85rem; }
-    .table thead th, .table tbody td { padding: 0.7rem 1rem; }
-    .table-responsive { max-height: 400px; }
-    canvas { max-height: 300px; }
+    .table thead th, .table tbody td { padding: 0.65rem 0.95rem; }
+    .table-responsive { max-height: 380px; }
+    canvas { max-height: 280px; }
 
     /* Restore horizontal button group in navbar */
-     .navbar-nav .btn-group {
-        margin-top: 0;
-        width: auto;
-        display: inline-flex; /* Default Bootstrap */
-        flex-direction: row;
-    }
-     .navbar-nav .btn-group > .btn {
-         width: auto;
-         margin-bottom: 0;
-     }
-     .navbar-nav .btn-outline-secondary {
-        margin-top: 0;
-        width: auto;
-    }
+    .navbar-nav .btn-group { margin-top: 0; width: auto; flex-direction: row; }
+    .navbar-nav .btn-group > .btn, .navbar-nav .btn-group > label { width: auto; margin-bottom: 0; }
+    .navbar-nav .btn-outline-secondary { margin-top: 0; width: auto; margin-left: 0.5rem; }
+    .btn-period { font-size: 0.8rem; }
 }
 
 /* Large Devices (LG - Laptops >=992px) */
 @media (min-width: 992px) {
-    .kpi-value { font-size: 3rem; }
-    .table { font-size: 0.9rem; } /* Near default size */
-    .table-responsive { max-height: 450px; }
-    canvas { max-height: 320px; }
+     body { padding-top: 70px; }
+     .navbar-custom { min-height: 70px; }
+    .card-title { font-size: 1.1rem; }
+    .kpi-value { font-size: 2.8rem; }
+    .kpi-label { font-size: 0.85rem; }
+    .table { font-size: 0.9rem; }
+    .table-responsive { max-height: 420px; }
+    canvas { max-height: 300px; }
 }
 
 /* Extra Large Devices (XL - Large Laptops/Desktops >=1200px) */
 @media (min-width: 1200px) {
-    .kpi-value { font-size: 3.25rem; }
-    .card-body { padding: 1.5rem; } /* More padding */
-    .table { font-size: 0.95rem; }
-    .table-responsive { max-height: 500px; }
-    canvas { max-height: 350px; }
+    .kpi-value { font-size: 3rem; }
+    .card-body { padding: 1.4rem; }
+    .table { font-size: 0.92rem; }
+    .table-responsive { max-height: 450px; }
+    canvas { max-height: 320px; }
 }
 
 /* Extra Extra Large Devices (XXL - Large Desktops/TVs >=1400px) */
 @media (min-width: 1400px) {
-    html { font-size: 17px; } /* Slightly larger base font for very large screens */
-    .kpi-value { font-size: 3.75rem; } /* Significantly larger KPI */
-    .card-title { font-size: 1.2rem; }
-    .card-body { padding: 1.75rem; }
-    .table { font-size: 1rem; } /* Full size table text */
-    .table thead th, .table tbody td { padding: 0.8rem 1.2rem; }
-    .table-responsive { max-height: 550px; }
-    canvas { max-height: 380px; }
+    /* Increase base font slightly for better readability on large screens */
+    html { font-size: 16.5px; } /* Instead of 17px, a smaller increment */
+
+    .kpi-value { font-size: 3.3rem; } /* Scales with base */
+    .card-title { font-size: 1.15rem; } /* Scales with base */
+    .card-body { padding: 1.6rem; }
+    .table { font-size: 0.95rem; } /* Scales with base */
+    .table thead th, .table tbody td { padding: 0.75rem 1.1rem; }
+    .table-responsive { max-height: 500px; }
+    canvas { max-height: 340px; }
 }
 
 
-/* --- Transitions & Hover Effects (Apply Generally) --- */
+/* --- Transitions & Hover Effects --- */
 #kpi-section .card, #charts-section .card, #table-section .card {
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    transition: transform 0.25s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 #kpi-section .card:hover, #charts-section .card:hover, #table-section .card:hover {
-    transform: translateY(-6px) scale(1.01); /* Enhanced hover */
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px); /* Subtle lift */
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
 }
 body[data-bs-theme="dark"] #kpi-section .card:hover,
 body[data-bs-theme="dark"] #charts-section .card:hover,
 body[data-bs-theme="dark"] #table-section .card:hover {
-     box-shadow: 0 12px 35px rgba(0, 0, 0, 0.7);
-     border-color: rgba(255, 255, 255, 0.2); /* Highlight border on hover */
+     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+     border-color: rgba(255, 255, 255, 0.15);
 }
