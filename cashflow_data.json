@@ -1,131 +1,131 @@
 [
-    {"date": "2020-01-15", "type": "income", "category": "Ventas Producto A", "description": "Venta inicial año", "amount": 2500.50},
-    {"date": "2020-01-20", "type": "expense", "category": "Alquiler Oficina", "description": "Pago Enero", "amount": 1200.00},
-    {"date": "2020-02-10", "type": "income", "category": "Servicios Consultoría", "description": "Cliente X", "amount": 3500.00},
-    {"date": "2020-02-25", "type": "expense", "category": "Suministros Oficina", "description": "Material papelería", "amount": 150.75},
-    {"date": "2020-03-05", "type": "expense", "category": "Marketing", "description": "Campaña Redes Sociales", "amount": 450.00},
-    {"date": "2020-03-18", "type": "income", "category": "Ventas Producto B", "description": "Venta Mayorista", "amount": 5200.00},
-    {"date": "2020-04-12", "type": "expense", "category": "Salarios", "description": "Nómina Marzo", "amount": 4800.00},
-    {"date": "2020-04-22", "type": "income", "category": "Ventas Producto A", "description": "Cliente Y", "amount": 1800.25},
-    {"date": "2020-05-15", "type": "expense", "category": "Software", "description": "Suscripción CRM", "amount": 99.00},
-    {"date": "2020-05-30", "type": "income", "category": "Intereses Bancarios", "description": "Cuenta Ahorro", "amount": 55.30},
-    {"date": "2020-06-10", "type": "expense", "category": "Viajes", "description": "Visita Cliente Z", "amount": 320.50},
-    {"date": "2020-06-25", "type": "income", "category": "Ventas Producto C", "description": "Venta Online", "amount": 850.00},
-    {"date": "2020-07-14", "type": "expense", "category": "Alquiler Oficina", "description": "Pago Julio", "amount": 1200.00},
-    {"date": "2020-07-28", "type": "income", "category": "Servicios Consultoría", "description": "Cliente W", "amount": 4100.00},
-    {"date": "2020-08-11", "type": "expense", "category": "Salarios", "description": "Nómina Julio", "amount": 4950.00},
-    {"date": "2020-08-20", "type": "income", "category": "Ventas Producto B", "description": "Cliente V", "amount": 2300.00},
-    {"date": "2020-09-05", "type": "expense", "category": "Impuestos", "description": "Pago Trimestral", "amount": 1850.00},
-    {"date": "2020-09-22", "type": "income", "category": "Ventas Producto A", "description": "Venta Menor", "amount": 750.75},
-    {"date": "2020-10-10", "type": "expense", "category": "Marketing", "description": "Publicidad Google Ads", "amount": 600.00},
-    {"date": "2020-10-25", "type": "income", "category": "Ventas Producto C", "description": "Marketplace", "amount": 1100.00},
-    {"date": "2020-11-12", "type": "expense", "category": "Salarios", "description": "Nómina Octubre", "amount": 5000.00},
-    {"date": "2020-11-28", "type": "income", "category": "Servicios Consultoría", "description": "Proyecto Alfa", "amount": 5500.00},
-    {"date": "2020-12-15", "type": "expense", "category": "Bonificaciones", "description": "Bonus Navidad", "amount": 3000.00},
-    {"date": "2020-12-22", "type": "income", "category": "Ventas Producto B", "description": "Venta Fin de Año", "amount": 4200.00},
-    {"date": "2021-01-16", "type": "income", "category": "Ventas Producto A", "description": "Venta Enero", "amount": 2800.00},
-    {"date": "2021-01-21", "type": "expense", "category": "Alquiler Oficina", "description": "Pago Enero", "amount": 1250.00},
-    {"date": "2021-02-11", "type": "income", "category": "Servicios Consultoría", "description": "Cliente M", "amount": 3800.00},
-    {"date": "2021-02-24", "type": "expense", "category": "Suministros Oficina", "description": "Compra material", "amount": 180.50},
-    {"date": "2021-03-06", "type": "expense", "category": "Marketing", "description": "Campaña Email", "amount": 300.00},
-    {"date": "2021-03-19", "type": "income", "category": "Ventas Producto B", "description": "Cliente N", "amount": 5500.00},
-    {"date": "2021-04-13", "type": "expense", "category": "Salarios", "description": "Nómina Marzo", "amount": 5100.00},
-    {"date": "2021-04-23", "type": "income", "category": "Ventas Producto A", "description": "Venta Online", "amount": 1950.00},
-    {"date": "2021-05-14", "type": "expense", "category": "Software", "description": "Licencia Adobe CC", "amount": 75.00},
-    {"date": "2021-05-29", "type": "income", "category": "Intereses Bancarios", "description": "Cuenta Inversión", "amount": 85.60},
-    {"date": "2021-06-11", "type": "expense", "category": "Viajes", "description": "Conferencia Sector", "amount": 750.00},
-    {"date": "2021-06-26", "type": "income", "category": "Ventas Producto C", "description": "Cliente O", "amount": 920.00},
-    {"date": "2021-07-15", "type": "expense", "category": "Alquiler Oficina", "description": "Pago Julio", "amount": 1250.00},
-    {"date": "2021-07-29", "type": "income", "category": "Servicios Consultoría", "description": "Cliente P", "amount": 4300.00},
-    {"date": "2021-08-12", "type": "expense", "category": "Salarios", "description": "Nómina Julio", "amount": 5200.00},
-    {"date": "2021-08-21", "type": "income", "category": "Ventas Producto B", "description": "Promoción Verano", "amount": 2600.00},
-    {"date": "2021-09-07", "type": "expense", "category": "Impuestos", "description": "Pago Trimestral", "amount": 2100.00},
-    {"date": "2021-09-23", "type": "income", "category": "Ventas Producto A", "description": "Venta Mayorista", "amount": 3100.50},
-    {"date": "2021-10-11", "type": "expense", "category": "Marketing", "description": "SEO Content", "amount": 700.00},
-    {"date": "2021-10-26", "type": "income", "category": "Ventas Producto C", "description": "Venta Especial", "amount": 1300.00},
-    {"date": "2021-11-13", "type": "expense", "category": "Salarios", "description": "Nómina Octubre", "amount": 5250.00},
-    {"date": "2021-11-29", "type": "income", "category": "Servicios Consultoría", "description": "Proyecto Beta", "amount": 6000.00},
-    {"date": "2021-12-14", "type": "expense", "category": "Equipamiento", "description": "Compra Portátil", "amount": 1400.00},
-    {"date": "2021-12-23", "type": "income", "category": "Ventas Producto B", "description": "Regalos Empresa", "amount": 3800.00},
-    {"date": "2022-01-18", "type": "income", "category": "Ventas Producto A", "description": "Inicio Año", "amount": 3000.75},
-    {"date": "2022-01-22", "type": "expense", "category": "Alquiler Oficina", "description": "Pago Enero", "amount": 1300.00},
-    {"date": "2022-02-14", "type": "income", "category": "Servicios Consultoría", "description": "Cliente Q", "amount": 4000.00},
-    {"date": "2022-02-26", "type": "expense", "category": "Suministros Oficina", "description": "Tóner Impresora", "amount": 120.00},
-    {"date": "2022-03-08", "type": "expense", "category": "Marketing", "description": "Feria Comercial", "amount": 1500.00},
-    {"date": "2022-03-21", "type": "income", "category": "Ventas Producto B", "description": "Cliente R", "amount": 6100.00},
-    {"date": "2022-04-15", "type": "expense", "category": "Salarios", "description": "Nómina Marzo", "amount": 5300.00},
-    {"date": "2022-04-25", "type": "income", "category": "Ventas Producto A", "description": "Venta Web", "amount": 2100.50},
-    {"date": "2022-05-16", "type": "expense", "category": "Software", "description": "Suscripción Cloud", "amount": 150.00},
-    {"date": "2022-05-31", "type": "income", "category": "Intereses Bancarios", "description": "Depósito Plazo Fijo", "amount": 110.20},
-    {"date": "2022-06-13", "type": "expense", "category": "Reparaciones", "description": "Mantenimiento AC", "amount": 280.00},
-    {"date": "2022-06-28", "type": "income", "category": "Ventas Producto C", "description": "Cliente S", "amount": 1050.00},
-    {"date": "2022-07-16", "type": "expense", "category": "Alquiler Oficina", "description": "Pago Julio", "amount": 1300.00},
-    {"date": "2022-07-30", "type": "income", "category": "Servicios Consultoría", "description": "Cliente T", "amount": 4500.00},
-    {"date": "2022-08-15", "type": "expense", "category": "Salarios", "description": "Nómina Julio", "amount": 5400.00},
-    {"date": "2022-08-23", "type": "income", "category": "Ventas Producto B", "description": "Venta Corporativa", "amount": 3200.00},
-    {"date": "2022-09-09", "type": "expense", "category": "Impuestos", "description": "Pago Trimestral", "amount": 2300.00},
-    {"date": "2022-09-25", "type": "income", "category": "Ventas Producto A", "description": "Venta Minorista", "amount": 1500.00},
-    {"date": "2022-10-13", "type": "expense", "category": "Marketing", "description": "Evento Patrocinado", "amount": 900.00},
-    {"date": "2022-10-28", "type": "income", "category": "Ventas Producto C", "description": "Outlet", "amount": 1450.00},
-    {"date": "2022-11-15", "type": "expense", "category": "Salarios", "description": "Nómina Octubre", "amount": 5450.00},
-    {"date": "2022-11-30", "type": "income", "category": "Servicios Consultoría", "description": "Proyecto Gamma", "amount": 6500.00},
-    {"date": "2022-12-16", "type": "expense", "category": "Legal", "description": "Asesoría Contratos", "amount": 800.00},
-    {"date": "2022-12-24", "type": "income", "category": "Ventas Producto B", "description": "Campaña Navidad", "amount": 4800.00},
-    {"date": "2023-01-17", "type": "income", "category": "Ventas Producto A", "description": "Venta Reyes", "amount": 3200.25},
-    {"date": "2023-01-23", "type": "expense", "category": "Alquiler Oficina", "description": "Pago Enero", "amount": 1350.00},
-    {"date": "2023-02-15", "type": "income", "category": "Servicios Consultoría", "description": "Cliente U", "amount": 4200.00},
-    {"date": "2023-02-27", "type": "expense", "category": "Suministros Oficina", "description": "Material Limpieza", "amount": 95.50},
-    {"date": "2023-03-09", "type": "expense", "category": "Marketing", "description": "Publicidad Impresa", "amount": 400.00},
-    {"date": "2023-03-22", "type": "income", "category": "Ventas Producto B", "description": "Cliente V", "amount": 6500.00},
-    {"date": "2023-04-14", "type": "expense", "category": "Salarios", "description": "Nómina Marzo", "amount": 5500.00},
-    {"date": "2023-04-26", "type": "income", "category": "Ventas Producto A", "description": "Venta Primavera", "amount": 2300.00},
-    {"date": "2023-05-17", "type": "expense", "category": "Software", "description": "Herramienta Analítica", "amount": 199.00},
-    {"date": "2023-05-28", "type": "income", "category": "Ingresos Extraordinarios", "description": "Venta Activo", "amount": 1500.00},
-    {"date": "2023-06-14", "type": "expense", "category": "Formación", "description": "Curso Online Equipo", "amount": 600.00},
-    {"date": "2023-06-29", "type": "income", "category": "Ventas Producto C", "description": "Cliente W", "amount": 1150.00},
-    {"date": "2023-07-17", "type": "expense", "category": "Alquiler Oficina", "description": "Pago Julio", "amount": 1350.00},
-    {"date": "2023-07-27", "type": "income", "category": "Servicios Consultoría", "description": "Cliente X", "amount": 4800.00},
-    {"date": "2023-08-16", "type": "expense", "category": "Salarios", "description": "Nómina Julio", "amount": 5600.00},
-    {"date": "2023-08-24", "type": "income", "category": "Ventas Producto B", "description": "Venta Flash", "amount": 3500.00},
-    {"date": "2023-09-11", "type": "expense", "category": "Impuestos", "description": "Pago Trimestral", "amount": 2500.00},
-    {"date": "2023-09-26", "type": "income", "category": "Ventas Producto A", "description": "Cliente Y", "amount": 1800.50},
-    {"date": "2023-10-15", "type": "expense", "category": "Marketing", "description": "Colaboración Influencer", "amount": 1100.00},
-    {"date": "2023-10-30", "type": "income", "category": "Ventas Producto C", "description": "Promoción Halloween", "amount": 1600.00},
-    {"date": "2023-11-16", "type": "expense", "category": "Salarios", "description": "Nómina Octubre", "amount": 5650.00},
-    {"date": "2023-11-28", "type": "income", "category": "Servicios Consultoría", "description": "Proyecto Delta", "amount": 7000.00},
-    {"date": "2023-12-18", "type": "expense", "category": "Cena Empresa", "description": "Evento Navidad", "amount": 1200.00},
-    {"date": "2023-12-26", "type": "income", "category": "Ventas Producto B", "description": "Liquidación Stock", "amount": 5100.00},
-    {"date": "2024-01-19", "type": "income", "category": "Ventas Producto A", "description": "Rebajas Enero", "amount": 3500.00},
-    {"date": "2024-01-24", "type": "expense", "category": "Alquiler Oficina", "description": "Pago Enero", "amount": 1400.00},
-    {"date": "2024-02-16", "type": "income", "category": "Servicios Consultoría", "description": "Cliente Z", "amount": 4400.00},
-    {"date": "2024-02-28", "type": "expense", "category": "Suministros Oficina", "description": "Compra sillas", "amount": 550.00},
-    {"date": "2024-03-11", "type": "expense", "category": "Marketing", "description": "Campaña Video", "amount": 850.00},
-    {"date": "2024-03-25", "type": "income", "category": "Ventas Producto B", "description": "Cliente AA", "amount": 7000.00},
-    {"date": "2024-04-16", "type": "expense", "category": "Salarios", "description": "Nómina Marzo", "amount": 5700.00},
-    {"date": "2024-04-29", "type": "income", "category": "Ventas Producto A", "description": "Venta Mayorista", "amount": 2800.75},
-    {"date": "2024-05-18", "type": "expense", "category": "Software", "description": "Renovación Dominio/Hosting", "amount": 250.00},
-    {"date": "2024-05-30", "type": "income", "category": "Intereses Bancarios", "description": "Cuenta Empresa", "amount": 150.80},
-    {"date": "2024-06-15", "type": "expense", "category": "Viajes", "description": "Formación Equipo", "amount": 950.00},
-    {"date": "2024-06-27", "type": "income", "category": "Ventas Producto C", "description": "Cliente BB", "amount": 1350.00},
-    {"date": "2024-07-18", "type": "expense", "category": "Alquiler Oficina", "description": "Pago Julio", "amount": 1400.00},
-    {"date": "2024-07-29", "type": "income", "category": "Servicios Consultoría", "description": "Cliente CC", "amount": 5000.00},
-    {"date": "2024-08-19", "type": "expense", "category": "Salarios", "description": "Nómina Julio", "amount": 5800.00},
-    {"date": "2024-08-27", "type": "income", "category": "Ventas Producto B", "description": "Venta Especial Verano", "amount": 3900.00},
-    {"date": "2024-09-13", "type": "expense", "category": "Impuestos", "description": "Pago Trimestral", "amount": 2800.00},
-    {"date": "2024-09-28", "type": "income", "category": "Ventas Producto A", "description": "Cliente DD", "amount": 2100.00},
-    {"date": "2024-10-17", "type": "expense", "category": "Marketing", "description": "Merchandising", "amount": 750.00},
-    {"date": "2024-10-31", "type": "income", "category": "Ventas Producto C", "description": "Marketplace B", "amount": 1750.00},
-    {"date": "2024-11-18", "type": "expense", "category": "Salarios", "description": "Nómina Octubre", "amount": 5850.00},
-    {"date": "2024-11-27", "type": "income", "category": "Servicios Consultoría", "description": "Proyecto Epsilon", "amount": 7500.00},
-    {"date": "2024-12-17", "type": "expense", "category": "Bonificaciones", "description": "Bonus Fin de Año", "amount": 3500.00},
-    {"date": "2024-12-27", "type": "income", "category": "Ventas Producto B", "description": "Venta Final Año", "amount": 5500.00},
-    {"date": "2025-01-15", "type": "income", "category": "Ventas Producto A", "description": "Venta Enero 2025", "amount": 3800.00},
-    {"date": "2025-01-20", "type": "expense", "category": "Alquiler Oficina", "description": "Pago Enero 2025", "amount": 1450.00},
-    {"date": "2025-02-10", "type": "income", "category": "Servicios Consultoría", "description": "Cliente EE", "amount": 4800.00},
-    {"date": "2025-02-22", "type": "expense", "category": "Suministros Oficina", "description": "Compra Papel", "amount": 110.00},
-    {"date": "2025-03-05", "type": "expense", "category": "Marketing", "description": "Anuncios LinkedIn", "amount": 650.00},
-    {"date": "2025-03-18", "type": "income", "category": "Ventas Producto B", "description": "Cliente FF", "amount": 7200.00},
-    {"date": "2025-04-01", "type": "expense", "category": "Salarios", "description": "Nómina Marzo 2025", "amount": 6000.00},
-    {"date": "2025-04-10", "type": "income", "category": "Ventas Producto A", "description": "Venta Abril", "amount": 2500.50},
-     {"date": "2025-04-14", "type": "expense", "category": "Software", "description": "Suscripción Herramienta Proyectos", "amount": 129.00}
+ {"date":"2020-01-01","type":"income","category":"Servicios","description":"Cover happy life moment choose send individual future.","amount":4961.33}
+{"date":"2020-01-01","type":"expense","category":"Salarios","description":"Garden yard heart else build record woman.","amount":4121.47}
+{"date":"2020-02-01","type":"income","category":"Otros Ingresos","description":"Capital religious hospital sign.","amount":9685.62}
+{"date":"2020-02-01","type":"expense","category":"Salarios","description":"Tv value thought need suddenly own.","amount":5459.82}
+{"date":"2020-03-01","type":"income","category":"Inversiones","description":"School effect art.","amount":2480.93}
+{"date":"2020-03-01","type":"expense","category":"Tecnolog\u00eda","description":"Each discuss yeah put.","amount":3477.5}
+{"date":"2020-04-01","type":"income","category":"Ventas","description":"Use yet friend show conference.","amount":7967.96}
+{"date":"2020-04-01","type":"expense","category":"Impuestos","description":"Sit enough fish there street.","amount":4757.93}
+{"date":"2020-05-01","type":"income","category":"Ventas","description":"Answer sign ever business structure.","amount":8920.08}
+{"date":"2020-05-01","type":"expense","category":"Marketing","description":"Give kitchen thousand system item make.","amount":3429.67}
+{"date":"2020-06-01","type":"income","category":"Inversiones","description":"Very great bring standard trade institution city.","amount":9695.2}
+{"date":"2020-06-01","type":"expense","category":"Alquiler","description":"Center cause should above Congress place.","amount":7073.05}
+{"date":"2020-07-01","type":"income","category":"Ventas","description":"Account street behavior important make.","amount":6692.52}
+{"date":"2020-07-01","type":"expense","category":"Salarios","description":"Store process show beyond fact.","amount":7435.74}
+{"date":"2020-08-01","type":"income","category":"Inversiones","description":"School firm class never together police as.","amount":7233.03}
+{"date":"2020-08-01","type":"expense","category":"Tecnolog\u00eda","description":"Morning when bar turn.","amount":6243.4}
+{"date":"2020-09-01","type":"income","category":"Inversiones","description":"Cell piece decade even magazine beyond.","amount":4318.4}
+{"date":"2020-09-01","type":"expense","category":"Gastos Administrativos","description":"Every system ground list how.","amount":2698.44}
+{"date":"2020-10-01","type":"income","category":"Otros Ingresos","description":"Floor market art interview church station.","amount":3208.11}
+{"date":"2020-10-01","type":"expense","category":"Salarios","description":"Have act front TV involve.","amount":2774.19}
+{"date":"2020-11-01","type":"income","category":"Servicios","description":"Condition nice attention certainly story require side.","amount":2403.87}
+{"date":"2020-11-01","type":"expense","category":"Alquiler","description":"Fish rate cold risk official some key.","amount":1007.66}
+{"date":"2020-12-01","type":"income","category":"Otros Ingresos","description":"Modern rich husband nor scientist.","amount":2587.0}
+{"date":"2020-12-01","type":"expense","category":"Impuestos","description":"Night development image including life Congress poor leg.","amount":1683.54}
+{"date":"2021-01-01","type":"income","category":"Inversiones","description":"Green land career want occur.","amount":2531.37}
+{"date":"2021-01-01","type":"expense","category":"Alquiler","description":"Us southern take newspaper hospital what official trial.","amount":5429.79}
+{"date":"2021-02-01","type":"income","category":"Servicios","description":"Group father light tax next finally fear interesting.","amount":8524.03}
+{"date":"2021-02-01","type":"expense","category":"Impuestos","description":"Teacher food month music parent.","amount":7442.34}
+{"date":"2021-03-01","type":"income","category":"Ventas","description":"Economic cup manage class.","amount":4653.93}
+{"date":"2021-03-01","type":"expense","category":"Alquiler","description":"Everybody green cultural figure.","amount":1547.67}
+{"date":"2021-04-01","type":"income","category":"Inversiones","description":"Agreement need model father quite.","amount":8895.58}
+{"date":"2021-04-01","type":"expense","category":"Gastos Administrativos","description":"Action school other join member pass.","amount":2540.61}
+{"date":"2021-05-01","type":"income","category":"Servicios","description":"Lead American hope suggest outside.","amount":7526.02}
+{"date":"2021-05-01","type":"expense","category":"Gastos Administrativos","description":"Marriage low loss write claim.","amount":3494.94}
+{"date":"2021-06-01","type":"income","category":"Ventas","description":"Note your science.","amount":2865.11}
+{"date":"2021-06-01","type":"expense","category":"Alquiler","description":"Much serious girl character official someone.","amount":5402.64}
+{"date":"2021-07-01","type":"income","category":"Otros Ingresos","description":"Song fact discuss school audience term question.","amount":3503.79}
+{"date":"2021-07-01","type":"expense","category":"Gastos Administrativos","description":"Put minute raise century business light.","amount":5846.82}
+{"date":"2021-08-01","type":"income","category":"Ventas","description":"Person guess room from run road on.","amount":9084.99}
+{"date":"2021-08-01","type":"expense","category":"Salarios","description":"Difficult well bit today.","amount":3033.03}
+{"date":"2021-09-01","type":"income","category":"Servicios","description":"Manager task piece per member animal.","amount":9328.58}
+{"date":"2021-09-01","type":"expense","category":"Salarios","description":"Significant deal reason she resource turn cup.","amount":2273.82}
+{"date":"2021-10-01","type":"income","category":"Servicios","description":"Rock toward ability model seat.","amount":2313.13}
+{"date":"2021-10-01","type":"expense","category":"Marketing","description":"Fish but per end movie agreement down anyone.","amount":7695.83}
+{"date":"2021-11-01","type":"income","category":"Otros Ingresos","description":"Most major wear street interest situation.","amount":5176.96}
+{"date":"2021-11-01","type":"expense","category":"Impuestos","description":"Group receive region would executive.","amount":1755.27}
+{"date":"2021-12-01","type":"income","category":"Otros Ingresos","description":"Once relate despite today book staff.","amount":5293.66}
+{"date":"2021-12-01","type":"expense","category":"Gastos Administrativos","description":"Kid travel big then friend total cost.","amount":2358.76}
+{"date":"2022-01-01","type":"income","category":"Servicios","description":"Full chair past country activity forget particularly.","amount":4554.58}
+{"date":"2022-01-01","type":"expense","category":"Salarios","description":"Scene tend activity.","amount":5615.07}
+{"date":"2022-02-01","type":"income","category":"Inversiones","description":"Certain race go other.","amount":8855.43}
+{"date":"2022-02-01","type":"expense","category":"Marketing","description":"Direction teach talk religious role opportunity lawyer.","amount":4847.33}
+{"date":"2022-03-01","type":"income","category":"Servicios","description":"Walk bit partner partner worry.","amount":9766.68}
+{"date":"2022-03-01","type":"expense","category":"Marketing","description":"Hold you majority next well common discussion phone.","amount":6658.2}
+{"date":"2022-04-01","type":"income","category":"Ventas","description":"Member though lawyer respond once different.","amount":7525.9}
+{"date":"2022-04-01","type":"expense","category":"Tecnolog\u00eda","description":"Structure offer guy human success.","amount":4952.11}
+{"date":"2022-05-01","type":"income","category":"Otros Ingresos","description":"Even source look door sea poor information take.","amount":7229.9}
+{"date":"2022-05-01","type":"expense","category":"Gastos Administrativos","description":"Attack tend television.","amount":4352.23}
+{"date":"2022-06-01","type":"income","category":"Servicios","description":"Much worker travel stage.","amount":9592.54}
+{"date":"2022-06-01","type":"expense","category":"Salarios","description":"Wait interest attack list season.","amount":3254.89}
+{"date":"2022-07-01","type":"income","category":"Ventas","description":"Nor relationship various those exactly follow.","amount":5135.92}
+{"date":"2022-07-01","type":"expense","category":"Alquiler","description":"Reach although sport agent sea compare old.","amount":3647.43}
+{"date":"2022-08-01","type":"income","category":"Ventas","description":"Pretty special long member character why day fish.","amount":7212.31}
+{"date":"2022-08-01","type":"expense","category":"Marketing","description":"Begin because arm medical natural single.","amount":2310.68}
+{"date":"2022-09-01","type":"income","category":"Inversiones","description":"Far somebody scientist yard a fill part suddenly.","amount":4433.47}
+{"date":"2022-09-01","type":"expense","category":"Tecnolog\u00eda","description":"For area never spend write me fast.","amount":4124.0}
+{"date":"2022-10-01","type":"income","category":"Servicios","description":"Far little usually test.","amount":3780.1}
+{"date":"2022-10-01","type":"expense","category":"Alquiler","description":"Know sell also instead skin and outside.","amount":4710.48}
+{"date":"2022-11-01","type":"income","category":"Ventas","description":"Box somebody resource quality laugh boy.","amount":4828.41}
+{"date":"2022-11-01","type":"expense","category":"Gastos Administrativos","description":"Success series tree power to resource.","amount":2952.91}
+{"date":"2022-12-01","type":"income","category":"Servicios","description":"Range worker spend south blood information of.","amount":9848.73}
+{"date":"2022-12-01","type":"expense","category":"Tecnolog\u00eda","description":"Base sit event break necessary be population first.","amount":3433.93}
+{"date":"2023-01-01","type":"income","category":"Otros Ingresos","description":"Sell where great imagine.","amount":4090.08}
+{"date":"2023-01-01","type":"expense","category":"Impuestos","description":"Fast traditional social include.","amount":7355.85}
+{"date":"2023-02-01","type":"income","category":"Ventas","description":"During growth leg within help.","amount":2553.06}
+{"date":"2023-02-01","type":"expense","category":"Salarios","description":"Skill memory again Mr.","amount":7985.62}
+{"date":"2023-03-01","type":"income","category":"Otros Ingresos","description":"Free fund responsibility during.","amount":7282.83}
+{"date":"2023-03-01","type":"expense","category":"Salarios","description":"Stand receive hit last current child.","amount":1910.0}
+{"date":"2023-04-01","type":"income","category":"Servicios","description":"Treatment success various at.","amount":9210.94}
+{"date":"2023-04-01","type":"expense","category":"Marketing","description":"Show together together almost account nearly.","amount":1320.26}
+{"date":"2023-05-01","type":"income","category":"Ventas","description":"National direction either idea different hotel.","amount":4768.81}
+{"date":"2023-05-01","type":"expense","category":"Gastos Administrativos","description":"Address member every interesting really election.","amount":2338.8}
+{"date":"2023-06-01","type":"income","category":"Otros Ingresos","description":"Read trouble wide general perform ten.","amount":4618.84}
+{"date":"2023-06-01","type":"expense","category":"Marketing","description":"Probably step understand personal.","amount":5549.02}
+{"date":"2023-07-01","type":"income","category":"Ventas","description":"How others range.","amount":8836.79}
+{"date":"2023-07-01","type":"expense","category":"Alquiler","description":"Watch personal blood song rest field.","amount":6225.39}
+{"date":"2023-08-01","type":"income","category":"Inversiones","description":"Strategy administration will far article visit letter.","amount":9106.58}
+{"date":"2023-08-01","type":"expense","category":"Impuestos","description":"Course these and magazine policy hundred hold.","amount":7190.86}
+{"date":"2023-09-01","type":"income","category":"Otros Ingresos","description":"Poor strong final tree politics space TV art.","amount":9153.39}
+{"date":"2023-09-01","type":"expense","category":"Tecnolog\u00eda","description":"Mouth find dinner want first now support.","amount":4522.3}
+{"date":"2023-10-01","type":"income","category":"Servicios","description":"Skin accept reason whatever include.","amount":2912.33}
+{"date":"2023-10-01","type":"expense","category":"Impuestos","description":"Fall black player camera guy.","amount":6731.57}
+{"date":"2023-11-01","type":"income","category":"Otros Ingresos","description":"Successful successful piece must.","amount":4394.17}
+{"date":"2023-11-01","type":"expense","category":"Alquiler","description":"Write red success party beyond meet.","amount":2654.57}
+{"date":"2023-12-01","type":"income","category":"Ventas","description":"Magazine executive democratic shake rise student.","amount":5471.03}
+{"date":"2023-12-01","type":"expense","category":"Gastos Administrativos","description":"Sell generation measure brother administration compare system.","amount":2640.25}
+{"date":"2024-01-01","type":"income","category":"Otros Ingresos","description":"Person election stage such.","amount":4299.91}
+{"date":"2024-01-01","type":"expense","category":"Gastos Administrativos","description":"Step firm book describe.","amount":4646.09}
+{"date":"2024-02-01","type":"income","category":"Otros Ingresos","description":"Purpose how able occur serve.","amount":3917.37}
+{"date":"2024-02-01","type":"expense","category":"Gastos Administrativos","description":"Federal environmental one people front system difficult.","amount":5710.89}
+{"date":"2024-03-01","type":"income","category":"Ventas","description":"Among skin edge week.","amount":4951.64}
+{"date":"2024-03-01","type":"expense","category":"Salarios","description":"Practice end contain cut line poor.","amount":5121.41}
+{"date":"2024-04-01","type":"income","category":"Ventas","description":"Member nice model fill computer.","amount":6899.4}
+{"date":"2024-04-01","type":"expense","category":"Impuestos","description":"Quality performance when small wonder step.","amount":6596.86}
+{"date":"2024-05-01","type":"income","category":"Ventas","description":"Century fish relationship none police exist.","amount":6898.54}
+{"date":"2024-05-01","type":"expense","category":"Tecnolog\u00eda","description":"Morning not staff of worry want else.","amount":3478.96}
+{"date":"2024-06-01","type":"income","category":"Otros Ingresos","description":"Approach though game these style wrong can.","amount":9896.4}
+{"date":"2024-06-01","type":"expense","category":"Impuestos","description":"Must high fall although.","amount":2186.72}
+{"date":"2024-07-01","type":"income","category":"Servicios","description":"Hit drop manage treat security.","amount":4774.39}
+{"date":"2024-07-01","type":"expense","category":"Alquiler","description":"Space probably again measure.","amount":3085.64}
+{"date":"2024-08-01","type":"income","category":"Ventas","description":"Apply particularly everything through.","amount":5032.2}
+{"date":"2024-08-01","type":"expense","category":"Tecnolog\u00eda","description":"Red none control.","amount":5977.58}
+{"date":"2024-09-01","type":"income","category":"Otros Ingresos","description":"Approach short there political art.","amount":8769.79}
+{"date":"2024-09-01","type":"expense","category":"Gastos Administrativos","description":"Traditional ready range right air ever.","amount":4246.88}
+{"date":"2024-10-01","type":"income","category":"Servicios","description":"Discover garden top over it.","amount":6130.05}
+{"date":"2024-10-01","type":"expense","category":"Tecnolog\u00eda","description":"Respond raise exist western.","amount":1751.48}
+{"date":"2024-11-01","type":"income","category":"Inversiones","description":"Debate choose cost foreign join.","amount":4242.7}
+{"date":"2024-11-01","type":"expense","category":"Impuestos","description":"Which enough education look do.","amount":2910.55}
+{"date":"2024-12-01","type":"income","category":"Ventas","description":"Sometimes Democrat travel off wife day difficult.","amount":6133.96}
+{"date":"2024-12-01","type":"expense","category":"Marketing","description":"Support second government young lead.","amount":2493.89}
+{"date":"2025-01-01","type":"income","category":"Inversiones","description":"Take world maybe it fill yard give perform.","amount":5900.69}
+{"date":"2025-01-01","type":"expense","category":"Salarios","description":"Pattern professor care thought issue.","amount":4153.48}
+{"date":"2025-02-01","type":"income","category":"Otros Ingresos","description":"Evening sure ok which possible.","amount":9575.28}
+{"date":"2025-02-01","type":"expense","category":"Tecnolog\u00eda","description":"Discussion huge forget world.","amount":3550.1}
+{"date":"2025-03-01","type":"income","category":"Inversiones","description":"Seem thank car challenge.","amount":8427.39}
+{"date":"2025-03-01","type":"expense","category":"Gastos Administrativos","description":"These even tree song off evidence.","amount":3870.63}
+{"date":"2025-04-01","type":"income","category":"Inversiones","description":"Product consider realize capital necessary share.","amount":9143.52}
+{"date":"2025-04-01","type":"expense","category":"Alquiler","description":"Relationship race night hand evidence protect.","amount":6222.24}
+
   ]
