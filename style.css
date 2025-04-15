@@ -4,21 +4,23 @@
 /* --- CSS Variables --- */
 :root {
     /* Common */
-    --base-font-size: 16px; /* Base for rem calculations */
+    --base-font-size: 16px;
     --card-border-radius: 12px;
     --default-card-padding: 1.25rem;
     --default-card-margin-bottom: 1.5rem;
 
-    /* Typography Scale - Consistent Ratio */
-    --text-xs: 0.694rem;     /* ~11px */
-    --text-sm: 0.833rem;     /* ~13px */
-    --text-base: 1rem;       /* 16px */
-    --text-md: 1.2rem;       /* ~19px */
-    --text-lg: 1.44rem;      /* ~23px */
-    --text-xl: 1.728rem;     /* ~28px */
-    --text-2xl: 2.074rem;    /* ~33px */
-    --text-3xl: 2.488rem;    /* ~40px */
+    /* Typography Scale */
+    --text-xs: 0.694rem;
+    --text-sm: 0.833rem;
+    --text-base: 2rem;
+    --text-md: 1.2rem;
+    --text-lg: 1.44rem;
+    --text-xl: 1.728rem;
+    --text-2xl: 2.074rem;    /* ~33px - Standard KPI */
+    --text-3xl: 2.488rem;    /* ~40px - Original Saldo Final */
     --text-4xl: 2.986rem;    /* ~48px */
+    /* Custom size for Top Categories value */
+    --kpi-top-category-value-size: 3.125rem; /* TARGET: ~50px (approx 33px + ~17px, adjusted for better scale than +25px) */
 
     /* Light Mode */
     --bg-light: #f1f3f5;
@@ -67,8 +69,8 @@ html {
 body {
     font-family: 'Poppins', sans-serif;
     transition: background-color 0.3s ease, color 0.3s ease;
-    padding-top: 70px; /* Default, adjust in media queries if needed */
-    font-size: var(--text-base); /* Use base from scale */
+    padding-top: 70px;
+    font-size: var(--text-base);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -79,6 +81,7 @@ body[data-bs-theme="light"] { background-color: var(--bg-light); color: var(--te
 body[data-bs-theme="dark"] { background-color: var(--bg-dark); color: var(--text-dark); }
 
 /* --- Navbar --- */
+/* ... (navbar styles remain the same) ... */
 .navbar-custom {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -105,7 +108,9 @@ body[data-bs-theme="dark"] .btn-check:checked + .btn-outline-primary { backgroun
 body[data-bs-theme="dark"] .btn-outline-primary { color: var(--primary-color-dark); border-color: var(--primary-color-dark); }
 body[data-bs-theme="dark"] .btn-outline-primary:hover { background-color: rgba(80, 174, 255, 0.1); color: var(--text-glow-white); }
 
+
 /* --- Cards --- */
+/* ... (general card styles remain the same) ... */
 .card {
     border-radius: var(--card-border-radius);
     border: none;
@@ -140,12 +145,13 @@ body[data-bs-theme="light"] .card { background-color: var(--card-bg-light); }
 body[data-bs-theme="dark"] .card { background-color: var(--card-bg-dark); box-shadow: 0 5px 20px rgba(0, 0, 0, 0.45); border: 1px solid var(--border-dark); }
 body[data-bs-theme="dark"] .card-title { color: var(--text-glow-white); }
 
+
 /* --- KPI Cards --- */
 .kpi-card .card-body {
     text-align: center;
 }
 
-/* Default size for standard KPI values */
+/* Default size for standard KPI values (e.g., Clientes Activos) */
 .kpi-value {
     font-weight: 700;
     transition: color 0.3s ease, text-shadow 0.3s ease, font-size 0.3s ease;
@@ -153,15 +159,23 @@ body[data-bs-theme="dark"] .card-title { color: var(--text-glow-white); }
     margin-top: 0.3rem;
     margin-bottom: 0.1rem;
     line-height: 1.1;
-    font-size: var(--text-2xl); /* Default size */
+    font-size: var(--text-2xl); /* Default size (~33px) */
 }
 
-/* Larger size specifically for Saldo Final and Top Category monetary values */
-.saldo-final .kpi-value,
+/* ===================================================================== */
+/* == MODIFICACIÓN CLAVE: Tamaño GRANDE para Top Categoría Gasto/Ingreso == */
+/* ===================================================================== */
 .top-category .kpi-value {
-    font-size: var(--text-3xl); /* Make these larger */
-    margin-bottom: 0.2rem; /* Slightly more space before label/category */
+    font-size: var(--kpi-top-category-value-size); /* Usa la variable (~50px) */
+    margin-bottom: 0.2rem; /* Más espacio antes del nombre de categoría */
 }
+
+/* Tamaño para Saldo Final (si quieres que sea distinto o igual, ajusta aquí) */
+.saldo-final .kpi-value {
+    font-size: var(--text-3xl); /* Tamaño original (~40px) o igual a --kpi-top-category-value-size si prefieres */
+}
+/* ===================================================================== */
+
 
 /* Secondary label (like under Saldo Final) */
 .kpi-label {
@@ -176,16 +190,14 @@ body[data-bs-theme="dark"] .kpi-label { color: var(--chart-text-dark); }
 
 /* Style for the category name text below the value */
 .category-name {
-    font-size: var(--text-base); /* Readable size */
-    font-weight: 400; /* Less emphasis than value */
-    margin-top: 0; /* Tighten space to the value above */
-    color: var(--chart-text-light); /* Dimmer color */
+    font-size: var(--text-base);
+    font-weight: 400;
+    margin-top: 0;
+    color: var(--chart-text-light);
     line-height: 1.3;
-    display: block; /* Ensure it takes space */
+    display: block;
 }
-body[data-bs-theme="dark"] .category-name {
-    color: var(--chart-text-dark);
-}
+body[data-bs-theme="dark"] .category-name { color: var(--chart-text-dark); }
 
 /* KPI Glow effects */
 body[data-bs-theme="dark"] .kpi-value { text-shadow: var(--kpi-glow-dark); }
@@ -209,22 +221,9 @@ body[data-bs-theme="light"] .period-badge { background-color: rgba(0, 0, 0, 0.05
 .kpi-conditional.status-ok, .table-value.status-ok { color: var(--success-light); }
 .kpi-conditional.status-warn, .table-value.status-warn { color: var(--warning-light); font-weight: 600; }
 .kpi-conditional.status-risk, .table-value.status-risk { color: var(--danger-light); font-weight: 700; }
-
-body[data-bs-theme="dark"] .kpi-conditional.status-ok,
-body[data-bs-theme="dark"] .table-value.status-ok {
-    color: var(--neon-green);
-    text-shadow: 0 0 5px rgba(96, 208, 128, 0.6);
-}
-body[data-bs-theme="dark"] .kpi-conditional.status-warn,
-body[data-bs-theme="dark"] .table-value.status-warn {
-    color: var(--neon-yellow);
-    text-shadow: 0 0 5px rgba(250, 204, 21, 0.6);
-}
-body[data-bs-theme="dark"] .kpi-conditional.status-risk,
-body[data-bs-theme="dark"] .table-value.status-risk {
-    color: var(--neon-red);
-    text-shadow: 0 0 5px rgba(255, 95, 95, 0.6);
-}
+body[data-bs-theme="dark"] .kpi-conditional.status-ok, body[data-bs-theme="dark"] .table-value.status-ok { color: var(--neon-green); text-shadow: 0 0 5px rgba(96, 208, 128, 0.6); }
+body[data-bs-theme="dark"] .kpi-conditional.status-warn, body[data-bs-theme="dark"] .table-value.status-warn { color: var(--neon-yellow); text-shadow: 0 0 5px rgba(250, 204, 21, 0.6); }
+body[data-bs-theme="dark"] .kpi-conditional.status-risk, body[data-bs-theme="dark"] .table-value.status-risk { color: var(--neon-red); text-shadow: 0 0 5px rgba(255, 95, 95, 0.6); }
 
 /* Highlight animation */
 .value-update { animation: highlight 1s ease-out; }
@@ -236,64 +235,23 @@ body[data-bs-theme="dark"] .table-value.status-risk {
 
 /* --- Chart Cards --- */
 /* ... (chart styles remain largely the same) ... */
-.chart-card {
-     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
-     padding-bottom: 0.5rem;
-}
-body[data-bs-theme="dark"] .chart-card {
-     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.5);
-}
-canvas {
-    max-height: 280px; /* Default */
-    width: 100% !important;
-}
+.chart-card { box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06); padding-bottom: 0.5rem; }
+body[data-bs-theme="dark"] .chart-card { box-shadow: 0 7px 25px rgba(0, 0, 0, 0.5); }
+canvas { max-height: 280px; width: 100% !important; }
 
 /* --- Table Styles --- */
 /* ... (table styles remain largely the same, using text scale) ... */
 .table-card { animation: fadeIn 0.5s ease-out; }
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.table-responsive {
-    max-height: 400px; /* Default */
-    overflow-y: auto;
-    border: 1px solid var(--border-light);
-    border-top: none;
-    border-radius: 0 0 var(--card-border-radius) var(--card-border-radius);
-}
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.table-responsive { max-height: 400px; overflow-y: auto; border: 1px solid var(--border-light); border-top: none; border-radius: 0 0 var(--card-border-radius) var(--card-border-radius); }
 body[data-bs-theme="dark"] .table-responsive { border-color: var(--border-dark); }
-
-.table {
-    margin-bottom: 0;
-    font-size: var(--text-sm); /* Use scale */
-}
-
-.table thead th {
-    font-weight: 600;
-    white-space: nowrap;
-    font-size: var(--text-xs); /* Use scale */
-    text-transform: uppercase;
-    letter-spacing: 0.6px;
-    padding: 0.7rem 0.9rem;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    border-bottom-width: 2px;
-}
-.table tbody td {
-    padding: 0.6rem 0.9rem;
-    vertical-align: middle;
-}
-
-/* Theme-specific table styles */
+.table { margin-bottom: 0; font-size: var(--text-sm); }
+.table thead th { font-weight: 600; white-space: nowrap; font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.6px; padding: 0.7rem 0.9rem; position: sticky; top: 0; z-index: 10; border-bottom-width: 2px; }
+.table tbody td { padding: 0.6rem 0.9rem; vertical-align: middle; }
 body[data-bs-theme="light"] .table thead th { background-color: var(--table-header-bg-light); color: var(--text-light); border-color: var(--border-light); }
 body[data-bs-theme="light"] .table-striped > tbody > tr:nth-of-type(odd) > * { background-color: var(--table-stripe-light); }
-
 body[data-bs-theme="dark"] .table { --bs-table-color: var(--text-dark); --bs-table-border-color: var(--border-dark); --bs-table-striped-color: var(--text-dark); --bs-table-striped-bg: var(--table-stripe-dark); --bs-table-hover-color: var(--text-glow-white); --bs-table-hover-bg: rgba(255, 255, 255, 0.06); }
 body[data-bs-theme="dark"] .table thead th { background-color: var(--table-header-bg-dark); color: var(--text-glow-white); border-color: var(--border-dark); }
-
 .table-value { font-weight: 500; text-align: right; white-space: nowrap; }
 .table-type-income .table-value { color: var(--success-light); }
 .table-type-expense .table-value { color: var(--danger-light); }
@@ -309,22 +267,22 @@ body[data-bs-theme="dark"] .footer-custom { border-top-color: var(--border-dark)
 
 /* Mobile (XS - <576px) */
 @media (max-width: 575.98px) {
-    html { font-size: 15px; } /* Base size adjustment */
+    html { font-size: 15px; }
     body { padding-top: 60px; }
     .navbar-custom { min-height: 55px; }
     .container, .container-fluid { padding-left: 10px; padding-right: 10px; }
     .card { margin-bottom: 1rem; }
     .card-body { padding: 0.9rem; }
+    .card-title { font-size: var(--text-base); }
 
-    .card-title { font-size: var(--text-base); } /* Adjusted title size */
-
-    /* KPI Sizes for Mobile */
-    .kpi-value { font-size: var(--text-xl); } /* Standard KPI */
-    .saldo-final .kpi-value,
-    .top-category .kpi-value { font-size: var(--text-2xl); } /* Larger KPIs */
+    /* KPI Sizes Mobile */
+    .kpi-value { font-size: var(--text-xl); } /* Standard: ~28px */
+    /* >> Ajuste específico para Top Categoría en móvil << */
+    .top-category .kpi-value { font-size: 2.5rem; } /* ~37px - Más grande que el estándar */
+    .saldo-final .kpi-value { font-size: var(--text-2xl); } /* ~31px */
 
     .kpi-label { font-size: var(--text-xs); }
-    .category-name { font-size: var(--text-sm); } /* Category name size */
+    .category-name { font-size: var(--text-sm); }
 
     /* Table Mobile */
     .table { font-size: var(--text-xs); }
@@ -345,9 +303,10 @@ body[data-bs-theme="dark"] .footer-custom { border-top-color: var(--border-dark)
     html { font-size: 15.5px; }
     .card-title { font-size: var(--text-md); }
 
-    .kpi-value { font-size: var(--text-xl); }
-    .saldo-final .kpi-value,
-    .top-category .kpi-value { font-size: var(--text-2xl); }
+    .kpi-value { font-size: var(--text-xl); } /* ~29px */
+    /* >> Ajuste específico para Top Categoría en SM << */
+    .top-category .kpi-value { font-size: 2.8rem; } /* ~43px */
+    .saldo-final .kpi-value { font-size: var(--text-2xl); } /* ~33px */
 
     .kpi-label { font-size: var(--text-xs); }
     .category-name { font-size: var(--text-sm); }
@@ -366,13 +325,14 @@ body[data-bs-theme="dark"] .footer-custom { border-top-color: var(--border-dark)
     .card-body { padding: var(--default-card-padding); }
     .card-title { font-size: var(--text-md); }
 
-    /* KPI Sizes for Tablets */
-    .kpi-value { font-size: var(--text-2xl); } /* Standard KPI */
-    .saldo-final .kpi-value,
-    .top-category .kpi-value { font-size: var(--text-3xl); } /* Larger KPIs */
+    /* KPI Sizes Tablets */
+    .kpi-value { font-size: var(--text-2xl); } /* ~33px */
+    /* >> Ajuste específico para Top Categoría en MD << */
+    .top-category .kpi-value { font-size: var(--kpi-top-category-value-size); } /* Usa la variable base ~50px */
+    .saldo-final .kpi-value { font-size: var(--text-3xl); } /* ~40px */
 
     .kpi-label { font-size: var(--text-sm); }
-    .category-name { font-size: var(--text-base); } /* Category name size */
+    .category-name { font-size: var(--text-base); }
 
     .table { font-size: var(--text-sm); }
     .table thead th { font-size: var(--text-xs); padding: 0.65rem 0.95rem; }
@@ -391,17 +351,18 @@ body[data-bs-theme="dark"] .footer-custom { border-top-color: var(--border-dark)
 @media (min-width: 992px) {
      body { padding-top: 70px; }
      .navbar-custom { min-height: 70px; }
-    .card-title { font-size: var(--text-md); } /* Title size doesn't need to grow much */
+    .card-title { font-size: var(--text-md); }
 
-    /* KPI Sizes for Laptops */
-    .kpi-value { font-size: var(--text-2xl); } /* Standard */
-    .saldo-final .kpi-value,
-    .top-category .kpi-value { font-size: var(--text-3xl); } /* Larger */
+    /* KPI Sizes Laptops */
+    .kpi-value { font-size: var(--text-2xl); } /* ~33px */
+    /* >> Ajuste específico para Top Categoría en LG << */
+    .top-category .kpi-value { font-size: var(--kpi-top-category-value-size); } /* ~50px */
+    .saldo-final .kpi-value { font-size: var(--text-3xl); } /* ~40px */
 
     .kpi-label { font-size: var(--text-sm); }
     .category-name { font-size: var(--text-base); }
 
-    .table { font-size: var(--text-base); } /* Table text larger */
+    .table { font-size: var(--text-base); }
     .table thead th { font-size: var(--text-sm); }
     .table-responsive { max-height: 420px; }
     canvas { max-height: 300px; }
@@ -409,12 +370,13 @@ body[data-bs-theme="dark"] .footer-custom { border-top-color: var(--border-dark)
 
 /* Extra Large Devices (XL - Large Laptops/Desktops >=1200px) */
 @media (min-width: 1200px) {
-    html { font-size: 16.5px; } /* Slightly larger base */
+    html { font-size: 16.5px; }
 
-    /* KPI Sizes for XL */
-    .kpi-value { font-size: var(--text-2xl); } /* Standard */
-    .saldo-final .kpi-value,
-    .top-category .kpi-value { font-size: var(--text-3xl); } /* Larger */
+    /* KPI Sizes XL */
+    .kpi-value { font-size: var(--text-2xl); } /* ~34px */
+    /* >> Ajuste específico para Top Categoría en XL << */
+    .top-category .kpi-value { font-size: 3.3rem; } /* ~54px */
+    .saldo-final .kpi-value { font-size: var(--text-3xl); } /* ~41px */
 
     .card-body { padding: 1.4rem; }
     .table { font-size: var(--text-base); }
@@ -424,16 +386,17 @@ body[data-bs-theme="dark"] .footer-custom { border-top-color: var(--border-dark)
 
 /* Extra Extra Large Devices (XXL - Large Desktops/TVs >=1400px) */
 @media (min-width: 1400px) {
-    html { font-size: 17px; } /* Larger base for large screens */
+    html { font-size: 17px; }
 
-    /* KPI Sizes for XXL */
-    .kpi-value { font-size: var(--text-3xl); } /* Larger standard */
-    .saldo-final .kpi-value,
-    .top-category .kpi-value { font-size: var(--text-4xl); } /* Largest */
+    /* KPI Sizes XXL */
+    .kpi-value { font-size: var(--text-3xl); } /* ~42px */
+    /* >> Ajuste específico para Top Categoría en XXL << */
+    .top-category .kpi-value { font-size: 3.6rem; } /* ~61px */
+    .saldo-final .kpi-value { font-size: var(--text-4xl); } /* ~51px */
 
-    .card-title { font-size: var(--text-lg); } /* Larger titles */
-    .category-name { font-size: var(--text-md); } /* Larger category name */
-    .kpi-label { font-size: var(--text-base); } /* Larger labels */
+    .card-title { font-size: var(--text-lg); }
+    .category-name { font-size: var(--text-md); }
+    .kpi-label { font-size: var(--text-base); }
     .card-body { padding: 1.6rem; }
     .table { font-size: var(--text-base); }
     .table thead th { font-size: var(--text-sm); padding: 0.75rem 1.1rem; }
