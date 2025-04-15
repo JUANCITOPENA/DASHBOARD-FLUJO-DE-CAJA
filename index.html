@@ -12,140 +12,26 @@
 
     <link rel="stylesheet" href="style.css">
 
-    <style>
-        body {
-            padding-top: 70px; /* Adjust based on navbar height */
-            transition: background-color 0.3s, color 0.3s;
-        }
 
-        .navbar-custom {
-            background-color: var(--bs-body-bg); /* Use Bootstrap variable for theme compatibility */
-            box-shadow: 0 2px 4px rgba(0,0,0,.1);
-        }
-
-        .kpi-card, .chart-card, .table-card {
-            border: none;
-            border-radius: 0.5rem;
-            box-shadow: 0 0 15px rgba(0,0,0,0.05);
-            transition: transform 0.2s ease-in-out;
-            background-color: var(--bs-card-bg, white); /* Theme compatible background */
-            margin-bottom: 1.5rem; /* Add some space below cards */
-        }
-        .kpi-card:hover {
-            transform: translateY(-3px);
-        }
-
-        .kpi-value {
-            font-weight: bold;
-            transition: color 0.4s ease; /* Smooth color transition for conditional formatting */
-        }
-        .kpi-conditional.status-ok { color: var(--bs-success); }
-        .kpi-conditional.status-warn { color: var(--bs-warning); }
-        .kpi-conditional.status-risk { color: var(--bs-danger); }
-
-        /* Simple value update animation */
-        .value-update {
-            animation: pulse 0.5s ease-out;
-        }
-        @keyframes pulse {
-            0% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.05); opacity: 0.8; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-
-        .period-badge {
-            font-size: 0.75em;
-            margin-top: 5px;
-            display: inline-block;
-            padding: 0.3em 0.6em;
-            border-radius: 0.25rem;
-            background-color: var(--bs-secondary-bg); /* Default background */
-            color: var(--bs-secondary-color-rgb); /* Default text color */
-        }
-        /* Ensure badge text is visible in dark mode */
-        [data-bs-theme="dark"] .period-badge {
-             background-color: var(--bs-secondary);
-             color: var(--bs-light); /* Use light text on dark badges */
-        }
-
-
-        .chart-card canvas {
-            max-height: 350px; /* Limit chart height */
-            width: 100% !important; /* Ensure canvas fills container */
-        }
-
-        .table-responsive {
-            max-height: 500px; /* Limit table height and enable scroll */
-            overflow-y: auto;
-        }
-        .table thead.sticky-top {
-             position: sticky; /* Make header sticky */
-             top: 0; /* Stick to the top of the scrollable container */
-             background-color: var(--bs-table-bg, white); /* Ensure header background matches theme */
-             z-index: 10; /* Keep header above table content */
-             box-shadow: inset 0 -2px 0 var(--bs-border-color); /* Add a bottom border */
-        }
-
-        /* Ensure table cells don't wrap unnecessarily */
-        .table td, .table th {
-            white-space: nowrap;
-        }
-        /* Allow description to wrap if needed */
-        .table td:nth-child(4), .table th:nth-child(4) {
-            white-space: normal;
-        }
-
-
-        .footer-custom {
-            background-color: var(--bs-tertiary-bg); /* Theme compatible footer */
-            padding: 1rem 0;
-            font-size: 0.9em;
-            margin-top: 2rem;
-            border-top: 1px solid var(--bs-border-color);
-        }
-
-        /* Dark theme specific adjustments */
-        [data-bs-theme="dark"] body {
-             background-color: #121212; /* Dark background */
-        }
-         [data-bs-theme="dark"] .navbar-custom {
-             background-color: #1e1e1e;
-             box-shadow: 0 2px 4px rgba(255,255,255,.05);
-        }
-         [data-bs-theme="dark"] .kpi-card,
-         [data-bs-theme="dark"] .chart-card,
-         [data-bs-theme="dark"] .table-card {
-            background-color: #2b3035; /* Darker card background */
-            box-shadow: 0 0 15px rgba(255,255,255,0.03);
-         }
-          [data-bs-theme="dark"] .table thead.sticky-top {
-             background-color: #2b3035; /* Dark header background */
-             box-shadow: inset 0 -2px 0 var(--bs-border-color);
-          }
-         [data-bs-theme="dark"] .footer-custom {
-             background-color: #1e1e1e;
-         }
-         /* Adjust conditional colors for better contrast in dark mode if needed */
-         [data-bs-theme="dark"] .kpi-conditional.status-ok { color: #28a745; }
-         [data-bs-theme="dark"] .kpi-conditional.status-warn { color: #ffc107; }
-         [data-bs-theme="dark"] .kpi-conditional.status-risk { color: #dc3545; }
-
-         /* Style for the period filter buttons */
-        .btn-period {
-            font-size: 0.85rem; /* Slightly smaller font */
-            padding: 0.3rem 0.6rem; /* Adjust padding */
-        }
-    </style>
 </head>
-<body data-bs-theme="light"> <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+<body data-bs-theme="light"> 
+    
+    <nav class="navbar navbar-expand-lg navbar-custom fixed-top mb-1">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <i class="fas fa-chart-line me-2"></i>Flujo de Caja Dinámico 🔥
+            <!-- Aplica Flexbox a este enlace -->
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <!-- El H1 es el primer elemento Flex -->
+                <h1 class="mb-2 me-4"> 
+                    <i class="fas fa-chart-line me-2"></i>Flujo de Caja Dinámico 🔥
+                </h1>
+                <!-- La Imagen es el segundo elemento Flex -->
+                <img src="https://avatars.githubusercontent.com/u/38921558?v=4" alt="Avatar" class="navbar-avatar"> 
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
+            
                 <ul class="navbar-nav ms-auto align-items-center">
                     <li class="nav-item dropdown me-lg-3 mb-2 mb-lg-0">
                          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownFilters" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -160,13 +46,13 @@
                     <li class="nav-item me-lg-3 mb-2 mb-lg-0">
                         <div class="btn-group" role="group" aria-label="Filtro de Período">
                             <input type="radio" class="btn-check" name="period-filter" id="filter-all-periods" autocomplete="off" value="all_periods" checked> <label class="btn btn-outline-primary btn-period" for="filter-all-periods"><i class="fas fa-globe me-1"></i>Todo</label>
-
+    
                             <input type="radio" class="btn-check" name="period-filter" id="filter-monthly" autocomplete="off" value="monthly">
                             <label class="btn btn-outline-primary btn-period" for="filter-monthly"><i class="far fa-calendar-alt me-1"></i>Mensual</label>
-
+    
                             <input type="radio" class="btn-check" name="period-filter" id="filter-quarterly" autocomplete="off" value="quarterly">
                             <label class="btn btn-outline-primary btn-period" for="filter-quarterly"><i class="far fa-calendar-check me-1"></i>Trimestral</label>
-
+    
                             <input type="radio" class="btn-check" name="period-filter" id="filter-annual" autocomplete="off" value="annual">
                             <label class="btn btn-outline-primary btn-period" for="filter-annual"><i class="far fa-calendar-days me-1"></i>Anual</label>
                         </div>
@@ -181,7 +67,8 @@
         </div>
     </nav>
 
-    <main class="container-fluid mt-4"> <section id="kpi-section" class="row mb-4 gy-4">
+
+    <main class="container-fluid mt-lg-5"> <section id="kpi-section" class="row mb-4 gy-4">
             <div class="col-lg-3 col-md-6">
                 <div class="card kpi-card text-center h-100">
                     <div class="card-body d-flex flex-column"> <h5 class="card-title"><i class="fas fa-coins me-2 text-success"></i>Ingresos Totales 💰</h5>
