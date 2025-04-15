@@ -1,48 +1,60 @@
 /* Import Google Font */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap'); /* Added 500 weight */
 
 /* --- CSS Variables --- */
 :root {
+    /* Common */
+    --base-font-size: 16px; /* Base for rem calculations */
+
     /* Light Mode */
-    --bg-light: #ffffff;
+    --bg-light: #f1f3f5; /* Slightly off-white */
     --text-light: #212529;
-    --card-bg-light: #f8f9fa;
+    --card-bg-light: #ffffff; /* Pure white cards */
     --border-light: #dee2e6;
-    --navbar-bg-light: rgba(255, 255, 255, 0.9);
+    --navbar-bg-light: rgba(255, 255, 255, 0.85); /* Slightly less transparent */
     --primary-color-light: #0d6efd;
     --success-light: #198754;
     --warning-light: #ffc107;
     --danger-light: #dc3545;
     --kpi-glow-light: rgba(0, 0, 0, 0.1);
-    --chart-grid-light: rgba(0, 0, 0, 0.1);
-    --chart-text-light: #666;
-    --table-stripe-light: rgba(0, 0, 0, 0.05);
+    --chart-grid-light: rgba(0, 0, 0, 0.08);
+    --chart-text-light: #555;
+    --table-stripe-light: #f8f9fa; /* Explicit stripe color */
+    --table-header-bg-light: #e9ecef;
 
     /* Dark Mode */
-    --bg-dark: #121212;
-    --text-dark: #e0e0e0;
-    --card-bg-dark: #1e1e1e;
-    --border-dark: #333;
-    --navbar-bg-dark: rgba(30, 30, 30, 0.9);
-    --primary-color-dark: #4dabf7; /* Lighter blue for dark bg */
-    --success-dark: #69db7c; /* Bright green */
-    --warning-dark: #ffd43b; /* Bright yellow */
-    --danger-dark: #ff6b6b; /* Bright red */
+    --bg-dark: #0c0c0c; /* Darker background */
+    --text-dark: #e8e8e8; /* Slightly brighter text */
+    --card-bg-dark: #1a1a1a; /* Slightly adjusted card */
+    --border-dark: #383838; /* Slightly lighter border */
+    --navbar-bg-dark: rgba(26, 26, 26, 0.85); /* Slightly less transparent */
+    --primary-color-dark: #4dabf7;
+    --success-dark: #69db7c;
+    --warning-dark: #ffd43b;
+    --danger-dark: #ff6b6b;
     --text-glow-yellow: #ffd43b;
     --text-glow-white: #ffffff;
-    --kpi-glow-dark: 0 0 15px rgba(255, 212, 59, 0.6); /* Yellow glow */
+    --kpi-glow-dark: 0 0 15px rgba(77, 171, 247, 0.5); /* Blue primary glow */
     --chart-grid-dark: rgba(255, 255, 255, 0.1);
-    --chart-text-dark: #aaa;
-    --table-stripe-dark: rgba(255, 255, 255, 0.05);
+    --chart-text-dark: #bbb;
+    --table-stripe-dark: rgba(255, 255, 255, 0.04); /* More subtle stripe */
+    --table-header-bg-dark: #2c2c2c;
     --neon-green: #39FF14;
     --neon-red: #FF3131;
+    --neon-yellow: #f1fa8c; /* For Warning */
 }
 
-/* --- Base Styles --- */
+/* --- Base Styles & Font Scaling Foundation --- */
+html {
+    font-size: var(--base-font-size); /* Set base for rem units */
+}
+
 body {
     font-family: 'Poppins', sans-serif;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    padding-top: 70px; /* Account for fixed navbar */
+    transition: background-color 0.4s ease, color 0.4s ease;
+    padding-top: 75px; /* Adjust if navbar height changes */
+    font-size: 1rem; /* Default body font size */
+    line-height: 1.6;
 }
 
 /* --- Theme Switching --- */
@@ -58,60 +70,89 @@ body[data-bs-theme="dark"] {
 
 /* --- Navbar --- */
 .navbar-custom {
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    transition: background-color 0.3s ease;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    border-bottom: 1px solid transparent; /* Start transparent */
+    min-height: 70px; /* Ensure minimum height */
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
 }
 
 body[data-bs-theme="light"] .navbar-custom {
     background-color: var(--navbar-bg-light);
+    border-color: var(--border-light);
 }
 body[data-bs-theme="dark"] .navbar-custom {
     background-color: var(--navbar-bg-dark);
-    border-bottom: 1px solid var(--border-dark);
+    border-color: var(--border-dark);
 }
 body[data-bs-theme="dark"] .navbar-brand,
 body[data-bs-theme="dark"] .nav-link {
     color: var(--text-dark) !important;
 }
+body[data-bs-theme="dark"] .navbar-brand:hover,
+body[data-bs-theme="dark"] .nav-link:hover {
+    color: var(--text-glow-white) !important;
+}
 body[data-bs-theme="dark"] .navbar-toggler-icon {
-     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28224, 224, 224, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28232, 232, 232, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
 /* Filter Buttons */
 .btn-period {
     transition: all 0.3s ease;
+    font-size: 0.9rem; /* Slightly smaller buttons */
+    padding: 0.4rem 0.8rem;
 }
 body[data-bs-theme="dark"] .btn-check:checked + .btn-outline-primary {
     background-color: var(--primary-color-dark);
     border-color: var(--primary-color-dark);
     color: var(--bg-dark);
-    box-shadow: 0 0 10px var(--primary-color-dark);
+    box-shadow: 0 0 12px rgba(77, 171, 247, 0.7);
 }
 body[data-bs-theme="dark"] .btn-outline-primary {
     color: var(--primary-color-dark);
     border-color: var(--primary-color-dark);
 }
 body[data-bs-theme="dark"] .btn-outline-primary:hover {
-    background-color: rgba(77, 171, 247, 0.1);
+    background-color: rgba(77, 171, 247, 0.15);
+    color: var(--text-glow-white);
 }
 
 
 /* --- Cards --- */
 .card {
-    border-radius: 15px;
+    border-radius: 12px; /* Slightly less rounded */
     border: none;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    overflow: hidden; /* Ensure content respects border-radius */
+    transition: all 0.35s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    margin-bottom: 1.5rem; /* Default spacing */
 }
+.card-body {
+    padding: 1.25rem; /* Default padding */
+}
+.card-title {
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    font-size: 1.1rem; /* Base title size */
+    display: flex; /* Align icon and text */
+    align-items: center;
+}
+.card-title i {
+     font-size: 1.2em; /* Make icons slightly larger relative to title */
+     margin-right: 0.6rem;
+     line-height: 1; /* Prevent icon affecting line height */
+}
+
 body[data-bs-theme="light"] .card {
     background-color: var(--card-bg-light);
 }
 body[data-bs-theme="dark"] .card {
     background-color: var(--card-bg-dark);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.5);
     border: 1px solid var(--border-dark);
 }
 body[data-bs-theme="dark"] .card-title {
@@ -120,123 +161,150 @@ body[data-bs-theme="dark"] .card-title {
 
 /* --- KPI Cards --- */
 .kpi-card {
-    position: relative; /* For badge positioning */
-    transform-style: preserve-3d; /* Enable 3D effect for children */
-    perspective: 1000px; /* Define perspective */
+    position: relative;
+    text-align: center; /* Center align KPI content */
 }
 
 .kpi-value {
     font-weight: 700;
-    transition: color 0.3s ease, text-shadow 0.3s ease;
-    transform: translateZ(20px); /* Initial 3D effect */
+    transition: color 0.3s ease, text-shadow 0.3s ease, font-size 0.3s ease;
+    display: block; /* Ensure it takes full width for centering */
+    margin-top: 0.5rem;
+    margin-bottom: 0.25rem;
+    line-height: 1.2;
+    font-size: 2.5rem; /* Base KPI size */
 }
-.kpi-card .card-title i {
-     font-size: 1.1em;
-     margin-right: 8px;
+
+.kpi-label {
+    font-size: 0.9rem;
+    color: var(--chart-text-light); /* Use chart text color for secondary labels */
+    margin-bottom: 0;
+}
+
+body[data-bs-theme="dark"] .kpi-label {
+    color: var(--chart-text-dark);
 }
 
 body[data-bs-theme="dark"] .kpi-value {
-    text-shadow: var(--kpi-glow-dark); /* Luminescent effect */
+    text-shadow: var(--kpi-glow-dark);
 }
 body[data-bs-theme="light"] .kpi-value {
-     text-shadow: 0 2px 4px var(--kpi-glow-light);
+     text-shadow: 0 2px 5px var(--kpi-glow-light);
 }
 
 .period-badge {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 0.7em;
-    padding: 0.3em 0.6em;
+    top: 12px;
+    right: 12px;
+    font-size: 0.65em;
+    font-weight: 500;
+    padding: 0.35em 0.7em;
 }
 body[data-bs-theme="dark"] .period-badge {
-    background-color: var(--border-dark) !important;
-    color: var(--text-dark) !important;
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    color: var(--chart-text-dark) !important;
 }
 
 /* --- Conditional Formatting (KPIs & Table) --- */
-.kpi-conditional.status-ok, .table-value.status-ok {
-    color: var(--success-light);
-}
-.kpi-conditional.status-warn, .table-value.status-warn {
-    color: var(--warning-light);
-    font-weight: 600; /* Make warning stand out a bit */
-}
-.kpi-conditional.status-risk, .table-value.status-risk {
-    color: var(--danger-light);
-    font-weight: 700; /* Make risk stand out more */
-}
+.kpi-conditional.status-ok, .table-value.status-ok { color: var(--success-light); }
+.kpi-conditional.status-warn, .table-value.status-warn { color: var(--warning-light); font-weight: 600; }
+.kpi-conditional.status-risk, .table-value.status-risk { color: var(--danger-light); font-weight: 700; }
 
 body[data-bs-theme="dark"] .kpi-conditional.status-ok,
 body[data-bs-theme="dark"] .table-value.status-ok {
-    color: var(--neon-green); /* Use Neon for dark mode */
-    text-shadow: 0 0 8px var(--neon-green);
+    color: var(--neon-green);
+    text-shadow: 0 0 6px rgba(57, 255, 20, 0.7); /* Subtle glow */
 }
 body[data-bs-theme="dark"] .kpi-conditional.status-warn,
 body[data-bs-theme="dark"] .table-value.status-warn {
-    color: var(--warning-dark);
-    text-shadow: 0 0 8px var(--warning-dark);
+    color: var(--neon-yellow);
+    text-shadow: 0 0 6px rgba(241, 250, 140, 0.7);
 }
 body[data-bs-theme="dark"] .kpi-conditional.status-risk,
 body[data-bs-theme="dark"] .table-value.status-risk {
-    color: var(--neon-red); /* Use Neon for dark mode */
-    text-shadow: 0 0 8px var(--neon-red);
+    color: var(--neon-red);
+    text-shadow: 0 0 6px rgba(255, 49, 49, 0.7);
 }
 
-
-/* Highlight animation for updated values */
-.value-update {
-    animation: highlight 1s ease-out;
-}
-
+/* Highlight animation */
+.value-update { animation: highlight 1.2s ease-out; }
 @keyframes highlight {
-    0% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.15); opacity: 0.7; }
-    100% { transform: scale(1); opacity: 1; }
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
 }
-
 
 /* --- Chart Cards --- */
 .chart-card {
-     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+     padding-bottom: 1rem; /* Add space below chart */
 }
 body[data-bs-theme="dark"] .chart-card {
-     box-shadow: 0 6px 25px rgba(0, 0, 0, 0.5);
+     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.55);
 }
 canvas {
-    max-height: 350px; /* Limit chart height */
-    width: 100% !important; /* Ensure canvas fills container */
+    max-height: 300px; /* Default max height */
+    width: 100% !important;
 }
-
 
 /* --- Table Styles --- */
 .table-card {
-    animation: fadeIn 0.5s ease-in-out; /* Effect when table data changes */
+    animation: fadeIn 0.6s ease-in-out;
 }
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
+    from { opacity: 0; transform: translateY(15px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+.table-responsive {
+    max-height: 450px; /* Default scroll height */
+    overflow-y: auto;
+    border-radius: 0 0 12px 12px; /* Match card bottom radius */
+}
+
+.table {
+    margin-bottom: 0; /* Remove default margin inside responsive container */
+    font-size: 0.9rem; /* Base table font size */
 }
 
 .table thead th {
     font-weight: 600;
     white-space: nowrap;
+    font-size: 0.85rem; /* Slightly smaller header */
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 0.8rem 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
-body[data-bs-theme="light"] .table thead {
-    background-color: var(--card-bg-light);
+.table tbody td {
+    padding: 0.7rem 1rem;
+    vertical-align: middle;
+}
+
+/* Theme-specific table styles */
+body[data-bs-theme="light"] .table thead th {
+    background-color: var(--table-header-bg-light);
     color: var(--text-light);
+    border-bottom: 2px solid var(--border-light);
 }
+body[data-bs-theme="light"] .table-striped > tbody > tr:nth-of-type(odd) > * {
+    background-color: var(--table-stripe-light);
+}
+
 body[data-bs-theme="dark"] .table {
     --bs-table-color: var(--text-dark);
     --bs-table-border-color: var(--border-dark);
     --bs-table-striped-color: var(--text-dark);
     --bs-table-striped-bg: var(--table-stripe-dark);
     --bs-table-hover-color: var(--text-glow-white);
-    --bs-table-hover-bg: rgba(255, 255, 255, 0.075);
+    --bs-table-hover-bg: rgba(255, 255, 255, 0.07);
 }
-body[data-bs-theme="dark"] .table thead {
-     background-color: #2a2a2a; /* Slightly lighter than card bg */
+body[data-bs-theme="dark"] .table thead th {
+     background-color: var(--table-header-bg-dark);
      color: var(--text-glow-white);
+     border-bottom: 2px solid var(--border-dark);
 }
 
 .table-value {
@@ -250,67 +318,132 @@ body[data-bs-theme="dark"] .table thead {
 body[data-bs-theme="dark"] .table-type-income .table-value { color: var(--success-dark); }
 body[data-bs-theme="dark"] .table-type-expense .table-value { color: var(--danger-dark); }
 
-
-/* Make table header sticky */
-.table-responsive {
-    max-height: 500px; /* Control table scroll height */
-}
-.table thead {
-    position: sticky;
-    top: 0; /* Stick to the top of the scrollable container */
-    z-index: 1;
-}
-body[data-bs-theme="light"] .table thead {
-    background-color: var(--card-bg-light); /* Ensure background covers scrolled content */
-}
-body[data-bs-theme="dark"] .table thead {
-     background-color: #2a2a2a;
-}
-
 /* --- Footer --- */
 .footer-custom {
-    margin-top: 2rem;
-    padding: 1rem 0;
-    font-size: 0.9em;
+    margin-top: 3rem;
+    padding: 1.5rem 0;
+    font-size: 0.85em;
     border-top: 1px solid var(--border-light);
+    text-align: center;
 }
 body[data-bs-theme="dark"] .footer-custom {
     border-top: 1px solid var(--border-dark);
-    color: var(--chart-text-dark); /* Dimmer text */
+    color: var(--chart-text-dark);
 }
 
 /* --- Responsive Adjustments --- */
-@media (max-width: 767.98px) {
-    .kpi-value {
-        font-size: 2.5rem; /* Slightly smaller on mobile */
-    }
-    .navbar-nav .btn-group {
+
+/* Mobile (XS - <576px) */
+@media (max-width: 575.98px) {
+    body { padding-top: 65px; } /* Adjust for potentially smaller navbar */
+    .navbar-custom { min-height: 60px; }
+    .card-body { padding: 1rem; }
+    .card-title { font-size: 1rem; }
+    .kpi-value { font-size: 2rem; } /* Smaller KPI */
+    .kpi-label { font-size: 0.8rem; }
+    .table { font-size: 0.75rem; } /* Smaller table text */
+    .table thead th, .table tbody td { padding: 0.6rem 0.75rem; }
+    .table-responsive { max-height: 350px; }
+    canvas { max-height: 250px; }
+
+    .navbar-nav .btn-group { /* Stack buttons vertically */
         margin-top: 10px;
         width: 100%;
-        display: flex;
+        flex-direction: column;
     }
-    .navbar-nav .btn-group > label {
-        flex-grow: 1;
-    }
-    .navbar-nav .btn-outline-secondary {
+     .navbar-nav .btn-group > .btn {
+        width: 100%;
+        margin-bottom: 5px; /* Space between stacked buttons */
+        border-radius: 0.3rem !important; /* Consistent radius when stacked */
+     }
+     .navbar-nav .btn-group > label { /* Ensure label works with stacked button */
+         width: 100%;
+         margin-bottom: 5px;
+     }
+     .navbar-nav .btn-outline-secondary { /* Theme toggle button full width */
         margin-top: 10px;
         width: 100%;
-    }
-     .table-responsive {
-        max-height: 400px; /* Adjust for smaller screens */
     }
 }
 
-/* --- Transitions --- */
+/* Small Devices (SM - >=576px) */
+@media (min-width: 576px) {
+    .kpi-value { font-size: 2.25rem; }
+    .table { font-size: 0.8rem; }
+    canvas { max-height: 280px; }
+}
+
+/* Medium Devices (MD - Tablets >=768px) */
+@media (min-width: 768px) {
+    body { padding-top: 70px; } /* Restore default padding */
+    .navbar-custom { min-height: 70px; }
+    .card-body { padding: 1.25rem; } /* Restore default padding */
+    .card-title { font-size: 1.1rem; } /* Restore default title */
+    .kpi-value { font-size: 2.75rem; } /* Larger KPI */
+    .kpi-label { font-size: 0.9rem; }
+    .table { font-size: 0.85rem; }
+    .table thead th, .table tbody td { padding: 0.7rem 1rem; }
+    .table-responsive { max-height: 400px; }
+    canvas { max-height: 300px; }
+
+    /* Restore horizontal button group in navbar */
+     .navbar-nav .btn-group {
+        margin-top: 0;
+        width: auto;
+        display: inline-flex; /* Default Bootstrap */
+        flex-direction: row;
+    }
+     .navbar-nav .btn-group > .btn {
+         width: auto;
+         margin-bottom: 0;
+     }
+     .navbar-nav .btn-outline-secondary {
+        margin-top: 0;
+        width: auto;
+    }
+}
+
+/* Large Devices (LG - Laptops >=992px) */
+@media (min-width: 992px) {
+    .kpi-value { font-size: 3rem; }
+    .table { font-size: 0.9rem; } /* Near default size */
+    .table-responsive { max-height: 450px; }
+    canvas { max-height: 320px; }
+}
+
+/* Extra Large Devices (XL - Large Laptops/Desktops >=1200px) */
+@media (min-width: 1200px) {
+    .kpi-value { font-size: 3.25rem; }
+    .card-body { padding: 1.5rem; } /* More padding */
+    .table { font-size: 0.95rem; }
+    .table-responsive { max-height: 500px; }
+    canvas { max-height: 350px; }
+}
+
+/* Extra Extra Large Devices (XXL - Large Desktops/TVs >=1400px) */
+@media (min-width: 1400px) {
+    html { font-size: 17px; } /* Slightly larger base font for very large screens */
+    .kpi-value { font-size: 3.75rem; } /* Significantly larger KPI */
+    .card-title { font-size: 1.2rem; }
+    .card-body { padding: 1.75rem; }
+    .table { font-size: 1rem; } /* Full size table text */
+    .table thead th, .table tbody td { padding: 0.8rem 1.2rem; }
+    .table-responsive { max-height: 550px; }
+    canvas { max-height: 380px; }
+}
+
+
+/* --- Transitions & Hover Effects (Apply Generally) --- */
 #kpi-section .card, #charts-section .card, #table-section .card {
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 #kpi-section .card:hover, #charts-section .card:hover, #table-section .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    transform: translateY(-6px) scale(1.01); /* Enhanced hover */
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
 }
 body[data-bs-theme="dark"] #kpi-section .card:hover,
 body[data-bs-theme="dark"] #charts-section .card:hover,
 body[data-bs-theme="dark"] #table-section .card:hover {
-     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+     box-shadow: 0 12px 35px rgba(0, 0, 0, 0.7);
+     border-color: rgba(255, 255, 255, 0.2); /* Highlight border on hover */
 }
