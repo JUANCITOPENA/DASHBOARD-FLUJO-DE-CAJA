@@ -12,7 +12,7 @@
     /* Typography Scale */
     --text-xs: 0.694rem;
     --text-sm: 0.833rem;
-    --text-base: 2.5rem;
+    --text-base: 2.5rem; /* Base para font-size de body ahora es 1rem */
     --text-md: 1.2rem;
     --text-lg: 1.44rem;
     --text-xl: 1.728rem;
@@ -20,7 +20,7 @@
     --text-3xl: 2.488rem;    /* ~40px - Original Saldo Final */
     --text-4xl: 2.986rem;    /* ~48px */
     /* Custom size for Top Categories value */
-    --kpi-top-category-value-size: 3.125rem; /* TARGET: ~50px (approx 33px + ~17px, adjusted for better scale than +25px) */
+    --kpi-top-category-value-size: 3.125rem; /* TARGET: ~50px */
 
     /* Light Mode */
     --bg-light: #f1f3f5;
@@ -69,8 +69,8 @@ html {
 body {
     font-family: 'Poppins', sans-serif;
     transition: background-color 0.3s ease, color 0.3s ease;
-    padding-top: 70px;
-    font-size: var(--text-base);
+    padding-top: 70px; /* Ajustar según altura final del navbar */
+    font-size: var(--text-base); /* Usar 1rem como base para el cuerpo */
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -81,14 +81,13 @@ body[data-bs-theme="light"] { background-color: var(--bg-light); color: var(--te
 body[data-bs-theme="dark"] { background-color: var(--bg-dark); color: var(--text-dark); }
 
 /* --- Navbar --- */
-/* ... (navbar styles remain the same) ... */
 .navbar-custom {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     transition: background-color 0.3s ease, border-color 0.3s ease;
-    border-bottom: 1px solid; /* Defined per theme */
-    min-height: 65px; /* Base height */
+    border-bottom: 1px solid; /* Definido por tema */
+    min-height: 65px; /* Altura base */
     padding-top: 0.4rem;
     padding-bottom: 0.4rem;
 }
@@ -97,6 +96,34 @@ body[data-bs-theme="dark"] .navbar-custom { background-color: var(--navbar-bg-da
 body[data-bs-theme="dark"] .navbar-brand, body[data-bs-theme="dark"] .nav-link { color: var(--text-dark) !important; }
 body[data-bs-theme="dark"] .navbar-brand:hover, body[data-bs-theme="dark"] .nav-link:hover { color: var(--text-glow-white) !important; }
 body[data-bs-theme="dark"] .navbar-toggler-icon { background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28232, 232, 232, 0.85%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); }
+
+/* == INICIO: Estilos Navbar Brand (H1 + Imagen) == */
+.navbar-brand {
+    /* d-flex align-items-center se aplica en HTML via clases Bootstrap */
+    gap: 0.75rem; /* Espacio entre título y avatar */
+    text-decoration: none; /* Quita el subrayado */
+    padding-top: 0; /* Ajustar padding si es necesario */
+    padding-bottom: 0;
+}
+
+.navbar-brand h1 {
+    /* mb-0 y me-2 se aplican en HTML */
+    font-size: 1.4rem; /* Tamaño base del título */
+    font-weight: 600;
+    color: inherit; /* Hereda color del enlace */
+    white-space: nowrap; /* Evita saltos de línea */
+    line-height: 1.2; /* Ajustar si el título es alto */
+}
+
+.navbar-avatar {
+    width: 45px; /* Tamaño base avatar */
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    flex-shrink: 0; /* Evita que se encoja */
+}
+/* == FIN: Estilos Navbar Brand == */
 
 /* Filter Buttons */
 .btn-period {
@@ -110,7 +137,6 @@ body[data-bs-theme="dark"] .btn-outline-primary:hover { background-color: rgba(8
 
 
 /* --- Cards --- */
-/* ... (general card styles remain the same) ... */
 .card {
     border-radius: var(--card-border-radius);
     border: none;
@@ -125,13 +151,13 @@ body[data-bs-theme="dark"] .btn-outline-primary:hover { background-color: rgba(8
 .card-title {
     font-weight: 600;
     margin-bottom: 0.6rem;
-    font-size: var(--text-md); /* Use scale */
+    font-size: var(--text-md);
     display: flex;
     align-items: center;
     line-height: 1.4;
 }
 .card-title i {
-    font-size: 1.1em; /* Relative to title */
+    font-size: 1.1em;
     margin-right: 0.5rem;
     line-height: 1;
     color: var(--primary-color-light);
@@ -151,7 +177,7 @@ body[data-bs-theme="dark"] .card-title { color: var(--text-glow-white); }
     text-align: center;
 }
 
-/* Default size for standard KPI values (e.g., Clientes Activos) */
+/* Default size for standard KPI values */
 .kpi-value {
     font-weight: 700;
     transition: color 0.3s ease, text-shadow 0.3s ease, font-size 0.3s ease;
@@ -162,20 +188,16 @@ body[data-bs-theme="dark"] .card-title { color: var(--text-glow-white); }
     font-size: var(--text-2xl); /* Default size (~33px) */
 }
 
-/* ===================================================================== */
-/* == MODIFICACIÓN CLAVE: Tamaño GRANDE para Top Categoría Gasto/Ingreso == */
-/* ===================================================================== */
+/* Tamaño GRANDE para Top Categoría Gasto/Ingreso */
 .top-category .kpi-value {
     font-size: var(--kpi-top-category-value-size); /* Usa la variable (~50px) */
-    margin-bottom: 0.2rem; /* Más espacio antes del nombre de categoría */
+    margin-bottom: 0.2rem;
 }
 
-/* Tamaño para Saldo Final (si quieres que sea distinto o igual, ajusta aquí) */
+/* Tamaño para Saldo Final */
 .saldo-final .kpi-value {
-    font-size: var(--text-3xl); /* Tamaño original (~40px) o igual a --kpi-top-category-value-size si prefieres */
+    font-size: var(--text-3xl); /* Tamaño original (~40px) o var(--kpi-top-category-value-size) si quieres igual */
 }
-/* ===================================================================== */
-
 
 /* Secondary label (like under Saldo Final) */
 .kpi-label {
@@ -217,7 +239,6 @@ body[data-bs-theme="dark"] .period-badge { background-color: rgba(255, 255, 255,
 body[data-bs-theme="light"] .period-badge { background-color: rgba(0, 0, 0, 0.05) !important; color: var(--text-light) !important; }
 
 /* --- Conditional Formatting (KPIs & Table) --- */
-/* ... (conditional formatting remains the same) ... */
 .kpi-conditional.status-ok, .table-value.status-ok { color: var(--success-light); }
 .kpi-conditional.status-warn, .table-value.status-warn { color: var(--warning-light); font-weight: 600; }
 .kpi-conditional.status-risk, .table-value.status-risk { color: var(--danger-light); font-weight: 700; }
@@ -234,13 +255,11 @@ body[data-bs-theme="dark"] .kpi-conditional.status-risk, body[data-bs-theme="dar
 
 
 /* --- Chart Cards --- */
-/* ... (chart styles remain largely the same) ... */
 .chart-card { box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06); padding-bottom: 0.5rem; }
 body[data-bs-theme="dark"] .chart-card { box-shadow: 0 7px 25px rgba(0, 0, 0, 0.5); }
 canvas { max-height: 280px; width: 100% !important; }
 
 /* --- Table Styles --- */
-/* ... (table styles remain largely the same, using text scale) ... */
 .table-card { animation: fadeIn 0.5s ease-out; }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 .table-responsive { max-height: 400px; overflow-y: auto; border: 1px solid var(--border-light); border-top: none; border-radius: 0 0 var(--card-border-radius) var(--card-border-radius); }
@@ -258,6 +277,12 @@ body[data-bs-theme="dark"] .table thead th { background-color: var(--table-heade
 body[data-bs-theme="dark"] .table-type-income .table-value { color: var(--success-dark); }
 body[data-bs-theme="dark"] .table-type-expense .table-value { color: var(--danger-dark); }
 
+/* Permitir wrap en descripción de tabla */
+.table td:nth-child(4), .table th:nth-child(4) { /* Asume que descripción es la 4a columna */
+     white-space: normal;
+     min-width: 150px; /* Darle un ancho mínimo */
+}
+
 
 /* --- Footer --- */
 .footer-custom { margin-top: 2.5rem; padding: 1.2rem 0; font-size: var(--text-sm); border-top: 1px solid var(--border-light); text-align: center; }
@@ -270,16 +295,20 @@ body[data-bs-theme="dark"] .footer-custom { border-top-color: var(--border-dark)
     html { font-size: 15px; }
     body { padding-top: 60px; }
     .navbar-custom { min-height: 55px; }
+    /* == INICIO: Ajuste Navbar Brand Móvil == */
+    .navbar-brand h1 { font-size: 1.1rem; }
+    .navbar-avatar { width: 35px; height: 35px; }
+    .navbar-brand { gap: 0.5rem; }
+    /* == FIN: Ajuste Navbar Brand Móvil == */
     .container, .container-fluid { padding-left: 10px; padding-right: 10px; }
     .card { margin-bottom: 1rem; }
     .card-body { padding: 0.9rem; }
     .card-title { font-size: var(--text-base); }
 
     /* KPI Sizes Mobile */
-    .kpi-value { font-size: var(--text-xl); } /* Standard: ~28px */
-    /* >> Ajuste específico para Top Categoría en móvil << */
-    .top-category .kpi-value { font-size: 2.5rem; } /* ~37px - Más grande que el estándar */
-    .saldo-final .kpi-value { font-size: var(--text-2xl); } /* ~31px */
+    .kpi-value { font-size: var(--text-xl); }
+    .top-category .kpi-value { font-size: 2.5rem; } /* Ajustado para móvil */
+    .saldo-final .kpi-value { font-size: var(--text-2xl); }
 
     .kpi-label { font-size: var(--text-xs); }
     .category-name { font-size: var(--text-sm); }
@@ -302,11 +331,14 @@ body[data-bs-theme="dark"] .footer-custom { border-top-color: var(--border-dark)
 @media (min-width: 576px) {
     html { font-size: 15.5px; }
     .card-title { font-size: var(--text-md); }
+    /* == INICIO: Ajuste Navbar Brand SM == */
+    .navbar-brand h1 { font-size: 1.2rem; }
+    .navbar-avatar { width: 40px; height: 40px; }
+    /* == FIN: Ajuste Navbar Brand SM == */
 
-    .kpi-value { font-size: var(--text-xl); } /* ~29px */
-    /* >> Ajuste específico para Top Categoría en SM << */
-    .top-category .kpi-value { font-size: 2.8rem; } /* ~43px */
-    .saldo-final .kpi-value { font-size: var(--text-2xl); } /* ~33px */
+    .kpi-value { font-size: var(--text-xl); }
+    .top-category .kpi-value { font-size: 2.8rem; } /* Ajustado para SM */
+    .saldo-final .kpi-value { font-size: var(--text-2xl); }
 
     .kpi-label { font-size: var(--text-xs); }
     .category-name { font-size: var(--text-sm); }
@@ -318,18 +350,21 @@ body[data-bs-theme="dark"] .footer-custom { border-top-color: var(--border-dark)
 
 /* Medium Devices (MD - Tablets >=768px) */
 @media (min-width: 768px) {
-    html { font-size: 16px; } /* Restore base */
+    html { font-size: 16px; }
     body { padding-top: 65px; }
     .navbar-custom { min-height: 65px; }
+    /* == INICIO: Ajuste Navbar Brand MD == */
+    .navbar-brand h1 { font-size: 1.3rem; } /* Un poco más grande */
+    .navbar-avatar { width: 42px; height: 42px; }
+    /* == FIN: Ajuste Navbar Brand MD == */
     .card { margin-bottom: var(--default-card-margin-bottom); }
     .card-body { padding: var(--default-card-padding); }
     .card-title { font-size: var(--text-md); }
 
     /* KPI Sizes Tablets */
-    .kpi-value { font-size: var(--text-2xl); } /* ~33px */
-    /* >> Ajuste específico para Top Categoría en MD << */
-    .top-category .kpi-value { font-size: var(--kpi-top-category-value-size); } /* Usa la variable base ~50px */
-    .saldo-final .kpi-value { font-size: var(--text-3xl); } /* ~40px */
+    .kpi-value { font-size: var(--text-2xl); }
+    .top-category .kpi-value { font-size: var(--kpi-top-category-value-size); } /* Usa la variable base */
+    .saldo-final .kpi-value { font-size: var(--text-3xl); }
 
     .kpi-label { font-size: var(--text-sm); }
     .category-name { font-size: var(--text-base); }
@@ -351,13 +386,17 @@ body[data-bs-theme="dark"] .footer-custom { border-top-color: var(--border-dark)
 @media (min-width: 992px) {
      body { padding-top: 70px; }
      .navbar-custom { min-height: 70px; }
+     /* == INICIO: Ajuste Navbar Brand LG == */
+     .navbar-brand h1 { font-size: 1.4rem; } /* Tamaño por defecto */
+     .navbar-avatar { width: 45px; height: 45px; } /* Tamaño por defecto */
+     .navbar-brand { gap: 0.75rem; } /* Espacio por defecto */
+     /* == FIN: Ajuste Navbar Brand LG == */
     .card-title { font-size: var(--text-md); }
 
     /* KPI Sizes Laptops */
-    .kpi-value { font-size: var(--text-2xl); } /* ~33px */
-    /* >> Ajuste específico para Top Categoría en LG << */
-    .top-category .kpi-value { font-size: var(--kpi-top-category-value-size); } /* ~50px */
-    .saldo-final .kpi-value { font-size: var(--text-3xl); } /* ~40px */
+    .kpi-value { font-size: var(--text-2xl); }
+    .top-category .kpi-value { font-size: var(--kpi-top-category-value-size); }
+    .saldo-final .kpi-value { font-size: var(--text-3xl); }
 
     .kpi-label { font-size: var(--text-sm); }
     .category-name { font-size: var(--text-base); }
@@ -373,10 +412,9 @@ body[data-bs-theme="dark"] .footer-custom { border-top-color: var(--border-dark)
     html { font-size: 16.5px; }
 
     /* KPI Sizes XL */
-    .kpi-value { font-size: var(--text-2xl); } /* ~34px */
-    /* >> Ajuste específico para Top Categoría en XL << */
-    .top-category .kpi-value { font-size: 3.3rem; } /* ~54px */
-    .saldo-final .kpi-value { font-size: var(--text-3xl); } /* ~41px */
+    .kpi-value { font-size: var(--text-2xl); }
+    .top-category .kpi-value { font-size: 3.3rem; } /* Ajustado para XL */
+    .saldo-final .kpi-value { font-size: var(--text-3xl); }
 
     .card-body { padding: 1.4rem; }
     .table { font-size: var(--text-base); }
@@ -389,10 +427,9 @@ body[data-bs-theme="dark"] .footer-custom { border-top-color: var(--border-dark)
     html { font-size: 17px; }
 
     /* KPI Sizes XXL */
-    .kpi-value { font-size: var(--text-3xl); } /* ~42px */
-    /* >> Ajuste específico para Top Categoría en XXL << */
-    .top-category .kpi-value { font-size: 3.6rem; } /* ~61px */
-    .saldo-final .kpi-value { font-size: var(--text-4xl); } /* ~51px */
+    .kpi-value { font-size: var(--text-3xl); }
+    .top-category .kpi-value { font-size: 3.6rem; } /* Ajustado para XXL */
+    .saldo-final .kpi-value { font-size: var(--text-4xl); }
 
     .card-title { font-size: var(--text-lg); }
     .category-name { font-size: var(--text-md); }
