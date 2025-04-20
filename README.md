@@ -1,8 +1,10 @@
-# Dashboard Dinámico de Flujo de Caja 📊💰
+---
 
-## 📝 Descripción del Proyecto
+¡Hola a todos! 👋
 
-Este proyecto presenta un dashboard interactivo y dinámico diseñado para visualizar y analizar datos de flujo de caja (ingresos y gastos). Permite a los usuarios explorar sus finanzas a través de múltiples filtros, visualizaciones y períodos de tiempo, ofreciendo una visión clara del rendimiento financiero.
+Espero que estén teniendo un excelente día. 😊
+
+Estoy emocionado de compartir con ustedes mi último mini proyecto: **Dashboard Dinámico de Flujo de Caja** 📊💰. Este proyecto presenta un dashboard interactivo y dinámico diseñado para visualizar y analizar datos de flujo de caja (ingresos y gastos). Permite a los usuarios explorar sus finanzas a través de múltiples filtros, visualizaciones y períodos de tiempo, ofreciendo una visión clara del rendimiento financiero.
 
 **Características Principales:**
 
@@ -129,3 +131,13 @@ Este proyecto es excelente para aprender y practicar:
 ---
 
 ¡Explora tus finanzas! 🎉
+
+---
+
+No olvides darle una ⭐ a este repositorio en GitHub y activar la campanita 🔔 para no perderte ninguno de estos mini proyectos que impulsan tu aprendizaje y tu profesión. ¡Sígueme en mis redes para más contenido increíble con inteligencia artificial! 🤖✨
+
+Recuerda que puedes explorar el código, modificarlo y adaptarlo a tus necesidades. ¡La práctica constante es clave para dominar nuevas habilidades! 💪
+
+#DashboardDinámico #FlujoDeCaja #DesarrolloWeb #JavaScript #DataVisualization #ProyectosTecnológicos #InteligenciaArtificial
+
+---
