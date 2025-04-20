@@ -5,6 +5,8 @@ Espero que estén teniendo un excelente día. 😊
 
 Estoy emocionado de compartir con ustedes mi último mini proyecto: **Dashboard Dinámico de Flujo de Caja** 📊💰. Este proyecto presenta un dashboard interactivo y dinámico diseñado para visualizar y analizar datos de flujo de caja (ingresos y gastos). Permite a los usuarios explorar sus finanzas a través de múltiples filtros, visualizaciones y períodos de tiempo, ofreciendo una visión clara del rendimiento financiero.
 
+!()[]
+
 **Características Principales:**
 
 * **Visualización de KPIs Clave:** Muestra métricas importantes como Ingresos Totales, Gastos Totales, Flujo Neto y Margen Neto.
